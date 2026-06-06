@@ -17,81 +17,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Scottrix - Free Online Developer Tools, Financial Calculators &amp; GCSE Revision">
 <meta name="twitter:description" content="Free online tools: 30+ developer utilities, financial calculators, and GCSE revision notes. All client-side, fast &amp; private.">
+<link rel="stylesheet" href="style.css">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5741314833802600" crossorigin="anonymous"></script>
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-color: #ffffff;
-min-height: 100vh;
-display: flex;
-flex-direction: column;
-align-items: center;
-padding: 40px 20px;
-}
-h1 {
-font-size: 2.8rem;
-margin-bottom: 0.5rem;
-background: linear-gradient(135deg, #4A90D9, #357ABD);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
-}
-.subtitle { color: #a0a0a0; margin-bottom: 2rem; text-align: center; max-width: 700px; line-height: 1.6; }
-.container { width: 100%; max-width: 900px; }
-
-/* Navigation cards */
-.section-title { font-size: 1.5rem; color: #c0c8d0; margin: 2.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
-.link-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
-.link-card {
-display: block; padding: 24px;
-background: rgba(255,255,255,0.05);
-border: 1px solid rgba(255,255,255,0.1);
-border-radius: 12px;
-text-decoration: none;
-color: #4A90D9;
-font-size: 1.3rem;
-transition: all 0.3s;
-}
-.link-card:hover { background: rgba(74, 144, 217, 0.2); border-color: #4A90D9; transform: translateY(-2px); }
-.link-card .card-desc { display: block; color: #a0a0a0; font-size: 0.9rem; margin-top: 6px; line-height: 1.5; }
-
-/* Feature lists */
-.features { list-style: none; margin: 0.5rem 0 1.5rem; padding: 0; }
-.features li { color: #8899a6; padding: 0.3rem 0; padding-left: 1.2rem; position: relative; font-size: 0.95rem; line-height: 1.5; }
-.features li::before { content: "✓"; position: absolute; left: 0; color: #27ae60; font-weight: bold; }
-
-/* Content sections */
-.content-section { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 24px 28px; margin: 1.5rem 0; }
-.content-section h3 { color: #4A90D9; font-size: 1.15rem; margin-bottom: 0.8rem; }
-.content-section p { color: #8899a6; line-height: 1.7; margin-bottom: 0.8rem; font-size: 0.95rem; }
-.content-section ul { margin-left: 1.5rem; margin-bottom: 0.8rem; }
-.content-section li { color: #8899a6; line-height: 1.7; margin-bottom: 0.3rem; font-size: 0.95rem; }
-
-/* Tool grid */
-.tool-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0.5rem; margin: 0.8rem 0; }
-.tool-tag { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 6px 12px; font-size: 0.85rem; color: #a0a0a0; text-align: center; }
-
-/* FAQ */
-.faq-item { margin-bottom: 1rem; }
-.faq-item h4 { color: #c0c8d0; font-size: 1rem; margin-bottom: 0.3rem; }
-.faq-item p { color: #8899a6; font-size: 0.95rem; line-height: 1.6; }
-
-/* Privacy badges */
-.badges { display: flex; flex-wrap: wrap; gap: 1rem; margin: 1rem 0; }
-.badge { background: rgba(39, 174, 96, 0.15); border: 1px solid rgba(39, 174, 96, 0.3); border-radius: 8px; padding: 10px 16px; font-size: 0.9rem; color: #27ae60; }
-
-footer { margin-top: auto; padding-top: 3rem; color: #556; font-size: 0.85rem; text-align: center; }
-footer a { color: #4A90D9; text-decoration: none; }
-footer a:hover { text-decoration: underline; }
-
-@media (max-width: 600px) {
-  h1 { font-size: 2rem; }
-  .link-cards { grid-template-columns: 1fr; }
-  .tool-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
-}
-</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -101,221 +28,245 @@ footer a:hover { text-decoration: underline; }
   "description": "Free online developer tools, financial calculators, and GCSE revision notes.",
   "publisher": {
     "@type": "Organization",
-    "name": "Scottrix"
+    "name": "Scottrix",
+    "url": "https://scottrix.github.io/"
   }
 }
 </script>
 </head>
 <body>
-<h1>Scottrix</h1>
-<p class="subtitle">Free online tools for developers, students, and financial planning. Every tool runs entirely in your browser — your data never leaves your device, no account is required, and no personal information is collected.</p>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="logo">Scottrix</a>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="devtools/">DevTools</a>
+      <a href="fintools/">FinTools</a>
+      <a href="gcserevise/">GCSE Revise</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+</header>
 
-<div class="container">
+<main>
+<section class="hero">
+  <h1>Free Online Tools for Developers, Students &amp; Financial Planning</h1>
+  <p class="subtitle">Every tool runs entirely in your browser &mdash; your data never leaves your device, no account is required, and no personal information is collected.</p>
+</section>
 
-<!-- Main Site Links -->
-<h2 class="section-title">Our Tools</h2>
-<div class="link-cards">
-<a href="https://scottrix.github.io/devtools/" class="link-card">
-DevTools
-<span class="card-desc">30+ developer utilities — JSON formatter, Base64 encoder/decoder, regex tester, timestamp converter, and many more. All client-side.</span>
-</a>
-<a href="https://scottrix.github.io/fintools/" class="link-card" style="color: #27ae60;">
-FinTools
-<span class="card-desc">Financial calculators — currency converter, mortgage calculator, UK &amp; US tax calculators, compound interest, salary converter &amp; more.</span>
-</a>
-<a href="https://scottrix.github.io/gcserevise/" class="link-card" style="color: #e67e22;">
-GCSE Revise
-<span class="card-desc">Free revision notes for 36 GCSE subjects — Maths, Sciences, English, History, Geography &amp; more. AQA, OCR &amp; Edexcel.</span>
-</a>
-</div>
+<section class="site-section" id="tools">
+  <h2>Our Tools</h2>
 
-<!-- DevTools Detail -->
-<div class="content-section">
-<h3>DevTools — Developer Utilities</h3>
-<p>A comprehensive suite of 30+ free online developer tools that run entirely in your browser. No data is sent to any server, making them safe for working with sensitive data like API keys, configuration files, and personal information.</p>
-<div class="tool-grid">
-<span class="tool-tag">JSON Formatter</span>
-<span class="tool-tag">JSON Validator</span>
-<span class="tool-tag">Base64 Encode</span>
-<span class="tool-tag">Base64 Decode</span>
-<span class="tool-tag">Regex Tester</span>
-<span class="tool-tag">Timestamp Converter</span>
-<span class="tool-tag">Password Generator</span>
-<span class="tool-tag">Colour Converter</span>
-<span class="tool-tag">URL Encode/Decode</span>
-<span class="tool-tag">Hash Generator</span>
-<span class="tool-tag">UUID Generator</span>
-<span class="tool-tag">Cron Generator</span>
-<span class="tool-tag">ASCII Table</span>
-<span class="tool-tag">Unit Converter</span>
-<span class="tool-tag">Lorem Ipsum</span>
-<span class="tool-tag">Markdown Preview</span>
-<span class="tool-tag">HTML Encoder</span>
-<span class="tool-tag">JWT Decoder</span>
-<span class="tool-tag">Diff Checker</span>
-<span class="tool-tag">CSS Minifier</span>
-<span class="tool-tag">JS Minifier</span>
-<span class="tool-tag">SQL Formatter</span>
-<span class="tool-tag">XML Formatter</span>
-<span class="tool-tag">YAML Converter</span>
-<span class="tool-tag">Number Base Converter</span>
-<span class="tool-tag">Unicode Lookup</span>
-<span class="tool-tag">HTML Entity Encoder</span>
-<span class="tool-tag">Qr Code Generator</span>
-<span class="tool-tag">Image to Base64</span>
-<span class="tool-tag">Cheat Sheets</span>
-</div>
-<p>Common use cases include: formatting and validating API responses with the JSON tool, debugging authentication tokens with the JWT decoder, generating secure passwords for new accounts, converting between Unix timestamps and human-readable dates, and testing regular expressions before deploying them in production code.</p>
-</div>
+  <div class="link-cards">
+    <a href="devtools/" class="link-card link-card--devtools">
+      <h3>DevTools</h3>
+      <p>30+ developer utilities &mdash; JSON formatter, Base64 encoder/decoder, regex tester, timestamp converter, and many more. All client-side.</p>
+    </a>
+    <a href="fintools/" class="link-card link-card--fintools">
+      <h3>FinTools</h3>
+      <p>Financial calculators &mdash; currency converter, mortgage calculator, UK &amp; US tax calculators, compound interest, salary converter &amp; more.</p>
+    </a>
+    <a href="gcserevise/" class="link-card link-card--gcserevise">
+      <h3>GCSE Revise</h3>
+      <p>Free revision notes for 36 GCSE subjects &mdash; Maths, Sciences, English, History, Geography &amp; more. AQA, OCR &amp; Edexcel.</p>
+    </a>
+  </div>
+</section>
 
-<!-- FinTools Detail -->
-<div class="content-section">
-<h3>FinTools — Financial Calculators</h3>
-<p>Free financial calculators for personal finance, tax planning, and investment analysis. All calculations run client-side — your financial data is never transmitted to any server.</p>
-<div class="tool-grid">
-<span class="tool-tag">Currency Converter</span>
-<span class="tool-tag">Mortgage Calculator</span>
-<span class="tool-tag">UK Tax Calculator</span>
-<span class="tool-tag">US Tax Calculator</span>
-<span class="tool-tag">Compound Interest</span>
-<span class="tool-tag">Salary Converter</span>
-<span class="tool-tag">Loan Payoff Calculator</span>
-<span class="tool-tag">Inflation Calculator</span>
-<span class="tool-tag">Retirement Planner</span>
-<span class="tool-tag">Investment Return</span>
-<span class="tool-tag">Savings Goal</span>
-<span class="tool-tag">Tip Calculator</span>
-<span class="tool-tag">Discount Calculator</span>
-<span class="tool-tag">Break-Even Calculator</span>
-<span class="tool-tag">Depreciation Calculator</span>
-<span class="tool-tag">Net Worth Tracker</span>
-<span class="tool-tag">Stamp Duty Calculator</span>
-<span class="tool-tag">Capital Gains Tax</span>
-<span class="tool-tag">Student Loan Repayment</span>
-<span class="tool-tag">Pension Calculator</span>
-</div>
-<p>The UK tax calculator supports the latest 2025/26 tax year bands including personal allowance, Scottish rates, and student loan repayment plans (Plan 1, Plan 2, Plan 4, Plan 5, and Postgraduate). The mortgage calculator shows monthly repayments, total interest, and an amortisation schedule. The currency converter uses live exchange rates for 50+ currencies.</p>
-</div>
+<section class="content-section" id="devtools-detail">
+  <h3><a href="devtools/">DevTools &mdash; Developer Utilities</a></h3>
+  <p>A comprehensive suite of 30+ free online developer tools that run entirely in your browser. No data is sent to any server, making them safe for working with sensitive data like API keys, configuration files, and personal information.</p>
+  <div class="tool-grid">
+    <a href="devtools/" class="tool-tag">JSON Formatter</a>
+    <a href="devtools/" class="tool-tag">JSON Validator</a>
+    <a href="devtools/" class="tool-tag">Base64 Encode</a>
+    <a href="devtools/" class="tool-tag">Base64 Decode</a>
+    <a href="devtools/" class="tool-tag">Regex Tester</a>
+    <a href="devtools/" class="tool-tag">Timestamp Converter</a>
+    <a href="devtools/" class="tool-tag">Password Generator</a>
+    <a href="devtools/" class="tool-tag">Colour Converter</a>
+    <a href="devtools/" class="tool-tag">URL Encode/Decode</a>
+    <a href="devtools/" class="tool-tag">Hash Generator</a>
+    <a href="devtools/" class="tool-tag">UUID Generator</a>
+    <a href="devtools/" class="tool-tag">Cron Generator</a>
+    <a href="devtools/" class="tool-tag">ASCII Table</a>
+    <a href="devtools/" class="tool-tag">Unit Converter</a>
+    <a href="devtools/" class="tool-tag">Lorem Ipsum</a>
+    <a href="devtools/" class="tool-tag">Markdown Preview</a>
+    <a href="devtools/" class="tool-tag">HTML Encoder</a>
+    <a href="devtools/" class="tool-tag">JWT Decoder</a>
+    <a href="devtools/" class="tool-tag">Diff Checker</a>
+    <a href="devtools/" class="tool-tag">CSS Minifier</a>
+    <a href="devtools/" class="tool-tag">JS Minifier</a>
+    <a href="devtools/" class="tool-tag">SQL Formatter</a>
+    <a href="devtools/" class="tool-tag">XML Formatter</a>
+    <a href="devtools/" class="tool-tag">YAML Converter</a>
+    <a href="devtools/" class="tool-tag">Number Base Converter</a>
+    <a href="devtools/" class="tool-tag">Unicode Lookup</a>
+    <a href="devtools/" class="tool-tag">HTML Entity Encoder</a>
+    <a href="devtools/" class="tool-tag">QR Code Generator</a>
+    <a href="devtools/" class="tool-tag">Image to Base64</a>
+    <a href="devtools/" class="tool-tag">Cheat Sheets</a>
+  </div>
+  <p>Common use cases include: formatting and validating API responses with the JSON tool, debugging authentication tokens with the JWT decoder, generating secure passwords for new accounts, converting between Unix timestamps and human-readable dates, and testing regular expressions before deploying them in production code.</p>
+</section>
 
-<!-- GCSE Revise Detail -->
-<div class="content-section">
-<h3>GCSE Revise — Free Revision Notes</h3>
-<p>Comprehensive, free GCSE revision notes covering 36 subjects across all major exam boards (AQA, OCR, Edexcel, WJEC Eduqas). Written for students aged 14-16 aiming for grades 4-9, with topic-by-topic coverage including key definitions, worked examples, exam technique tips, and assessment objective guidance.</p>
-<div class="tool-grid">
-<span class="tool-tag">Mathematics</span>
-<span class="tool-tag">Biology</span>
-<span class="tool-tag">Chemistry</span>
-<span class="tool-tag">Physics</span>
-<span class="tool-tag">Combined Science</span>
-<span class="tool-tag">English Language</span>
-<span class="tool-tag">English Literature</span>
-<span class="tool-tag">Geography</span>
-<span class="tool-tag">History</span>
-<span class="tool-tag">Religious Studies</span>
-<span class="tool-tag">Computer Science</span>
-<span class="tool-tag">Business Studies</span>
-<span class="tool-tag">Economics</span>
-<span class="tool-tag">French</span>
-<span class="tool-tag">German</span>
-<span class="tool-tag">Spanish</span>
-<span class="tool-tag">Art &amp; Design</span>
-<span class="tool-tag">Music</span>
-<span class="tool-tag">Drama</span>
-<span class="tool-tag">PE</span>
-<span class="tool-tag">Psychology</span>
-<span class="tool-tag">Sociology</span>
-<span class="tool-tag">Citizenship</span>
-<span class="tool-tag">Law</span>
-<span class="tool-tag">Film Studies</span>
-<span class="tool-tag">Media Studies</span>
-<span class="tool-tag">Dance</span>
-<span class="tool-tag">Statistics</span>
-<span class="tool-tag">Electronics</span>
-<span class="tool-tag">Engineering</span>
-<span class="tool-tag">Food &amp; Nutrition</span>
-<span class="tool-tag">Classical Civilisation</span>
-<span class="tool-tag">Latin</span>
-<span class="tool-tag">Ancient History</span>
-<span class="tool-tag">Astronomy</span>
-<span class="tool-tag">Geology</span>
-</div>
-<p>Each topic page includes: detailed revision notes aligned to the specification, key terms and definitions, worked examples and practice questions, assessment objective guidance (AO1 knowledge, AO2 application, AO3 analysis and evaluation), and exam technique tips specific to that topic. The site features dark and light themes, mobile-responsive design, and an intuitive sidebar for navigating between topics within each subject.</p>
-</div>
+<section class="content-section" id="fintools-detail">
+  <h3><a href="fintools/">FinTools &mdash; Financial Calculators</a></h3>
+  <p>Free financial calculators for personal finance, tax planning, and investment analysis. All calculations run client-side &mdash; your financial data is never transmitted to any server.</p>
+  <div class="tool-grid">
+    <a href="fintools/" class="tool-tag">Currency Converter</a>
+    <a href="fintools/" class="tool-tag">Mortgage Calculator</a>
+    <a href="fintools/" class="tool-tag">UK Tax Calculator</a>
+    <a href="fintools/" class="tool-tag">US Tax Calculator</a>
+    <a href="fintools/" class="tool-tag">Compound Interest</a>
+    <a href="fintools/" class="tool-tag">Salary Converter</a>
+    <a href="fintools/" class="tool-tag">Loan Payoff Calculator</a>
+    <a href="fintools/" class="tool-tag">Inflation Calculator</a>
+    <a href="fintools/" class="tool-tag">Retirement Planner</a>
+    <a href="fintools/" class="tool-tag">Investment Return</a>
+    <a href="fintools/" class="tool-tag">Savings Goal</a>
+    <a href="fintools/" class="tool-tag">Tip Calculator</a>
+    <a href="fintools/" class="tool-tag">Discount Calculator</a>
+    <a href="fintools/" class="tool-tag">Break-Even Calculator</a>
+    <a href="fintools/" class="tool-tag">Depreciation Calculator</a>
+    <a href="fintools/" class="tool-tag">Net Worth Tracker</a>
+    <a href="fintools/" class="tool-tag">Stamp Duty Calculator</a>
+    <a href="fintools/" class="tool-tag">Capital Gains Tax</a>
+    <a href="fintools/" class="tool-tag">Student Loan Repayment</a>
+    <a href="fintools/" class="tool-tag">Pension Calculator</a>
+  </div>
+  <p>The UK tax calculator supports the latest 2025/26 tax year bands including personal allowance, Scottish rates, and student loan repayment plans (Plan 1, Plan 2, Plan 4, Plan 5, and Postgraduate). The mortgage calculator shows monthly repayments, total interest, and an amortisation schedule. The currency converter uses live exchange rates for 50+ currencies.</p>
+</section>
 
-<!-- Why Scottrix / Privacy -->
-<h2 class="section-title">Why Scottrix?</h2>
-<div class="badges">
-<span class="badge">🔒 No data collection</span>
-<span class="badge">⚡ No server processing</span>
-<span class="badge">🚫 No account required</span>
-<span class="badge">📱 Mobile friendly</span>
-<span class="badge">🌙 Dark &amp; light themes</span>
-<span class="badge">💷 100% free</span>
-</div>
-<div class="content-section">
-<h3>Privacy-First Design</h3>
-<p>Unlike most online tools, every Scottrix tool runs entirely in your web browser using client-side JavaScript. This means:</p>
-<ul>
-<li><strong>Your data stays on your device.</strong> When you format JSON, calculate your mortgage, or revise a topic, nothing is sent to any server. Not now, not ever.</li>
-<li><strong>No accounts or logins.</strong> We don't ask for your name, email, or any personal information. Just open a tool and start using it.</li>
-<li><strong>No tracking or analytics.</strong> We don't use Google Analytics, Facebook Pixel, or any third-party tracking. The only third-party scripts on our sites are for serving advertisements via Google AdSense, which uses its own cookies — you can opt out at <a href="https://www.google.com/settings/ads" style="color:#4A90D9;">Google Ads Settings</a>.</li>
-<li><strong>Open source.</strong> All Scottrix projects are available on <a href="https://github.com/scottrix" style="color:#4A90D9;">GitHub</a> so you can inspect the code yourself.</li>
-</ul>
-</div>
+<section class="content-section" id="gcserevise-detail">
+  <h3><a href="gcserevise/">GCSE Revise &mdash; Free Revision Notes</a></h3>
+  <p>Comprehensive, free GCSE revision notes covering 36 subjects across all major exam boards (AQA, OCR, Edexcel, WJEC Eduqas). Written for students aged 14-16 aiming for grades 4-9, with topic-by-topic coverage including key definitions, worked examples, exam technique tips, and assessment objective guidance.</p>
+  <div class="tool-grid">
+    <a href="gcserevise/mathematics.html" class="tool-tag">Mathematics</a>
+    <a href="gcserevise/biology.html" class="tool-tag">Biology</a>
+    <a href="gcserevise/chemistry.html" class="tool-tag">Chemistry</a>
+    <a href="gcserevise/physics.html" class="tool-tag">Physics</a>
+    <a href="gcserevise/combined-science.html" class="tool-tag">Combined Science</a>
+    <a href="gcserevise/english-language.html" class="tool-tag">English Language</a>
+    <a href="gcserevise/english-literature.html" class="tool-tag">English Literature</a>
+    <a href="gcserevise/geography.html" class="tool-tag">Geography</a>
+    <a href="gcserevise/history.html" class="tool-tag">History</a>
+    <a href="gcserevise/religious-studies.html" class="tool-tag">Religious Studies</a>
+    <a href="gcserevise/computer-science.html" class="tool-tag">Computer Science</a>
+    <a href="gcserevise/business.html" class="tool-tag">Business Studies</a>
+    <a href="gcserevise/economics.html" class="tool-tag">Economics</a>
+    <a href="gcserevise/french.html" class="tool-tag">French</a>
+    <a href="gcserevise/german.html" class="tool-tag">German</a>
+    <a href="gcserevise/spanish.html" class="tool-tag">Spanish</a>
+    <a href="gcserevise/art-and-design.html" class="tool-tag">Art &amp; Design</a>
+    <a href="gcserevise/music.html" class="tool-tag">Music</a>
+    <a href="gcserevise/drama.html" class="tool-tag">Drama</a>
+    <a href="gcserevise/pe.html" class="tool-tag">PE</a>
+    <a href="gcserevise/psychology.html" class="tool-tag">Psychology</a>
+    <a href="gcserevise/sociology.html" class="tool-tag">Sociology</a>
+    <a href="gcserevise/citizenship-studies.html" class="tool-tag">Citizenship</a>
+    <a href="gcserevise/law.html" class="tool-tag">Law</a>
+    <a href="gcserevise/film-studies.html" class="tool-tag">Film Studies</a>
+    <a href="gcserevise/media-studies.html" class="tool-tag">Media Studies</a>
+    <a href="gcserevise/dance.html" class="tool-tag">Dance</a>
+    <a href="gcserevise/statistics.html" class="tool-tag">Statistics</a>
+    <a href="gcserevise/electronics.html" class="tool-tag">Electronics</a>
+    <a href="gcserevise/engineering.html" class="tool-tag">Engineering</a>
+    <a href="gcserevise/food-preparation-nutrition.html" class="tool-tag">Food &amp; Nutrition</a>
+    <a href="gcserevise/classical-civilisation.html" class="tool-tag">Classical Civilisation</a>
+    <a href="gcserevise/latin.html" class="tool-tag">Latin</a>
+    <a href="gcserevise/ancient-history.html" class="tool-tag">Ancient History</a>
+    <a href="gcserevise/astronomy.html" class="tool-tag">Astronomy</a>
+    <a href="gcserevise/geology.html" class="tool-tag">Geology</a>
+  </div>
+  <p>Each topic page includes: detailed revision notes aligned to the specification, key terms and definitions, worked examples and practice questions, assessment objective guidance (AO1 knowledge, AO2 application, AO3 analysis and evaluation), and exam technique tips specific to that topic. The site features dark and light themes, mobile-responsive design, and an intuitive sidebar for navigating between topics within each subject.</p>
+</section>
 
-<!-- How to Use -->
-<div class="content-section">
-<h3>How to Use Scottrix Tools</h3>
-<p><strong>DevTools</strong> — Open the DevTools site, select a category from the sidebar (e.g. "Encoding", "Generators", "Formatters"), then choose the tool you need. Paste your input, configure any options, and the result appears instantly. All processing happens in your browser.</p>
-<p><strong>FinTools</strong> — Select a calculator from the sidebar or the category tabs. Enter your figures (salary, loan amount, interest rate, etc.) and results update in real-time. The UK tax calculator automatically applies the correct tax bands, National Insurance rates, and student loan thresholds for the 2025/26 tax year.</p>
-<p><strong>GCSE Revise</strong> — Choose your subject from the home page, then navigate to the strand and topic you want to revise. Each topic page contains comprehensive notes written for the AQA, OCR, and Edexcel specifications. Use the sidebar to move between related topics. Toggle between dark and light mode using the moon/sun button in the header.</p>
-</div>
+<section class="site-section" id="why-scottrix">
+  <h2>Why Scottrix?</h2>
+  <div class="badges">
+    <span class="badge">No data collection</span>
+    <span class="badge">No server processing</span>
+    <span class="badge">No account required</span>
+    <span class="badge">Mobile friendly</span>
+    <span class="badge">Dark &amp; light themes</span>
+    <span class="badge">100% free</span>
+  </div>
 
-<!-- FAQ -->
-<h2 class="section-title">Frequently Asked Questions</h2>
-<div class="content-section">
-<div class="faq-item">
-<h4>Are Scottrix tools really free?</h4>
-<p>Yes, all tools and revision notes are completely free to use. There are no premium tiers, no account requirements, and no usage limits. The site is supported by advertisements via Google AdSense.</p>
-</div>
-<div class="faq-item">
-<h4>Is my data safe?</h4>
-<p>All tool operations run in your browser. When you paste JSON into the formatter, enter your salary into the tax calculator, or read revision notes, that data never leaves your device. There is no server-side processing of your inputs.</p>
-</div>
-<div class="faq-item">
-<h4>Do I need to create an account?</h4>
-<p>No. No account, no login, no sign-up. Just visit the site and start using the tools immediately.</p>
-</div>
-<div class="faq-item">
-<h4>Which exam boards does GCSE Revise cover?</h4>
-<p>GCSE Revise covers AQA, OCR (including J277 for Computer Science, J204 for Geography, J205 for Economics), Edexcel, and WJEC Eduqas specifications. Each topic page indicates which exam boards the content is aligned with.</p>
-</div>
-<div class="faq-item">
-<h4>How accurate are the financial calculators?</h4>
-<p>The calculators use up-to-date tax bands and formulae for the 2025/26 tax year. Currency conversion rates are fetched from a live API. However, the calculators are for informational purposes only and should not replace professional financial advice. Always verify important calculations independently.</p>
-</div>
-<div class="faq-item">
-<h4>Can I use these tools on my phone?</h4>
-<p>Yes. All Scottrix sites are fully responsive and work on phones, tablets, and desktops. GCSE Revise also offers a dedicated mobile-friendly layout with a collapsible sidebar for easy topic navigation.</p>
-</div>
-<div class="faq-item">
-<h4>Is the code open source?</h4>
-<p>Yes. All Scottrix projects are on GitHub: <a href="https://github.com/scottrix/devtools" style="color:#4A90D9;">DevTools</a>, <a href="https://github.com/scottrix/fintools" style="color:#4A90D9;">FinTools</a>, and <a href="https://github.com/scottrix/gcserevise" style="color:#4A90D9;">GCSE Revise</a>. You can inspect the code, report issues, or suggest improvements.</p>
-</div>
-</div>
+  <div class="content-section">
+    <h3>Privacy-First Design</h3>
+    <p>Unlike most online tools, every Scottrix tool runs entirely in your web browser using client-side JavaScript. This means:</p>
+    <ul>
+      <li><strong>Your data stays on your device.</strong> When you format JSON, calculate your mortgage, or revise a topic, nothing is sent to any server. Not now, not ever.</li>
+      <li><strong>No accounts or logins.</strong> We don't ask for your name, email, or any personal information. Just open a tool and start using it.</li>
+      <li><strong>No tracking or analytics.</strong> We don't use Google Analytics, Facebook Pixel, or any third-party tracking. The only third-party scripts on our sites are for serving advertisements via Google AdSense, which uses its own cookies &mdash; you can opt out at <a href="https://www.google.com/settings/ads">Google Ads Settings</a>.</li>
+      <li><strong>Open source.</strong> All Scottrix projects are available on <a href="https://github.com/scottrix">GitHub</a> so you can inspect the code yourself.</li>
+    </ul>
+  </div>
+</section>
 
-<!-- About -->
-<h2 class="section-title">About Scottrix</h2>
-<div class="content-section">
-<p>Scottrix is an independent project creating free, privacy-respecting web tools. Founded by developer Scott Rix, the project started with a simple goal: build useful tools that don't compromise your privacy. Every tool is designed to work without a backend server, without collecting personal data, and without requiring an account.</p>
-<p>The project spans three distinct sites: <strong>DevTools</strong> for everyday developer tasks, <strong>FinTools</strong> for personal finance calculations, and <strong>GCSE Revise</strong> for students preparing for their GCSE examinations. Together, they serve tens of thousands of users each month.</p>
-<p>All code is open source and available on <a href="https://github.com/scottrix" style="color:#4A90D9;">GitHub</a>. Feedback, bug reports, and suggestions are welcome — contact us at <a href="mailto:contact@scott.scottrix.co.uk" style="color:#4A90D9;">contact@scott.scottrix.co.uk</a>.</p>
-</div>
+<section class="content-section" id="how-to-use">
+  <h3>How to Use Scottrix Tools</h3>
+  <p><strong><a href="devtools/">DevTools</a></strong> &mdash; Open the DevTools site, select a category from the sidebar (e.g. &ldquo;Encoding&rdquo;, &ldquo;Generators&rdquo;, &ldquo;Formatters&rdquo;), then choose the tool you need. Paste your input, configure any options, and the result appears instantly. All processing happens in your browser.</p>
+  <p><strong><a href="fintools/">FinTools</a></strong> &mdash; Select a calculator from the sidebar or the category tabs. Enter your figures (salary, loan amount, interest rate, etc.) and results update in real-time. The UK tax calculator automatically applies the correct tax bands, National Insurance rates, and student loan thresholds for the 2025/26 tax year.</p>
+  <p><strong><a href="gcserevise/">GCSE Revise</a></strong> &mdash; Choose your subject from the home page, then navigate to the strand and topic you want to revise. Each topic page contains comprehensive notes written for the AQA, OCR, and Edexcel specifications. Use the sidebar to move between related topics. Toggle between dark and light mode using the moon/sun button in the header.</p>
+</section>
 
-</div>
+<section class="site-section" id="faq">
+  <h2>Frequently Asked Questions</h2>
+  <div class="content-section">
+    <div class="faq-item">
+      <h4>Are Scottrix tools really free?</h4>
+      <p>Yes, all tools and revision notes are completely free to use. There are no premium tiers, no account requirements, and no usage limits. The site is supported by advertisements via Google AdSense.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Is my data safe?</h4>
+      <p>All tool operations run in your browser. When you paste JSON into the formatter, enter your salary into the tax calculator, or read revision notes, that data never leaves your device. There is no server-side processing of your inputs.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Do I need to create an account?</h4>
+      <p>No. No account, no login, no sign-up. Just visit the site and start using the tools immediately.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Which exam boards does GCSE Revise cover?</h4>
+      <p>GCSE Revise covers AQA, OCR (including J277 for Computer Science, J204 for Geography, J205 for Economics), Edexcel, and WJEC Eduqas specifications. Each topic page indicates which exam boards the content is aligned with.</p>
+    </div>
+    <div class="faq-item">
+      <h4>How accurate are the financial calculators?</h4>
+      <p>The calculators use up-to-date tax bands and formulae for the 2025/26 tax year. Currency conversion rates are fetched from a live API. However, the calculators are for informational purposes only and should not replace professional financial advice. Always verify important calculations independently.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Can I use these tools on my phone?</h4>
+      <p>Yes. All Scottrix sites are fully responsive and work on phones, tablets, and desktops. GCSE Revise also offers a dedicated mobile-friendly layout with a collapsible sidebar for easy topic navigation.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Is the code open source?</h4>
+      <p>Yes. All Scottrix projects are on GitHub: <a href="https://github.com/scottrix/devtools">DevTools</a>, <a href="https://github.com/scottrix/fintools">FinTools</a>, and <a href="https://github.com/scottrix/gcserevise">GCSE Revise</a>. You can inspect the code, report issues, or suggest improvements.</p>
+    </div>
+  </div>
+</section>
 
-<footer>
-<p>&copy; 2025 Scottrix | <a href="https://github.com/scottrix">GitHub</a> | <a href="privacy.html">Privacy Policy</a> | <a href="mailto:contact@scott.scottrix.co.uk">Contact</a></p>
+<section class="site-section" id="about-preview">
+  <h2>About Scottrix</h2>
+  <div class="content-section">
+    <p>Scottrix is an independent project creating free, privacy-respecting web tools. Founded by developer Scott Rix, the project started with a simple goal: build useful tools that don't compromise your privacy. Every tool is designed to work without a backend server, without collecting personal data, and without requiring an account.</p>
+    <p>The project spans three distinct sites: <strong><a href="devtools/">DevTools</a></strong> for everyday developer tasks, <strong><a href="fintools/">FinTools</a></strong> for personal finance calculations, and <strong><a href="gcserevise/">GCSE Revise</a></strong> for students preparing for their GCSE examinations. Together, they serve tens of thousands of users each month.</p>
+    <p>All code is open source and available on <a href="https://github.com/scottrix">GitHub</a>. Feedback, bug reports, and suggestions are welcome &mdash; contact us at <a href="mailto:contact@scott.scottrix.co.uk">contact@scott.scottrix.co.uk</a>. <a href="about.html">Learn more about Scottrix &rarr;</a></p>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <nav class="footer-nav" aria-label="Footer navigation">
+    <a href="devtools/">DevTools</a>
+    <a href="fintools/">FinTools</a>
+    <a href="gcserevise/">GCSE Revise</a>
+    <a href="about.html">About</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="mailto:contact@scott.scottrix.co.uk">Contact</a>
+    <a href="https://github.com/scottrix">GitHub</a>
+  </nav>
+  <p>&copy; 2025 Scottrix. All tools are free and open source.</p>
 </footer>
 </body>
 </html>
