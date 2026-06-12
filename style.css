@@ -178,10 +178,32 @@ main {
 .footer-nav a { color: #4A90D9; text-decoration: none; }
 .footer-nav a:hover { text-decoration: underline; }
 
+.affiliate-section { margin: 2.5rem 0; }
+.affiliate-section h2 { margin-bottom: 1rem; }
+.affiliate-cards { display: flex; gap: 1rem; flex-wrap: wrap; }
+.affiliate-card {
+  flex: 1; min-width: 200px; max-width: 320px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px; padding: 1.2rem;
+  text-decoration: none; color: #fff;
+  transition: border-color 0.2s, background 0.2s;
+}
+.affiliate-card:hover {
+  border-color: #4A90D9;
+  background: rgba(74,144,217,0.08);
+}
+.affiliate-card-title { font-weight: 600; margin-bottom: 0.3rem; }
+.affiliate-card-desc { font-size: 0.85rem; color: rgba(255,255,255,0.7); margin-bottom: 0.5rem; }
+.affiliate-card-store { font-size: 0.75rem; color: rgba(255,255,255,0.4); }
+.affiliate-disclaimer { font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-top: 0.8rem; }
+
 @media (max-width: 600px) {
   .hero h1 { font-size: 1.6rem; }
   .link-cards { grid-template-columns: 1fr; }
   .tool-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
   .header-inner { flex-wrap: wrap; gap: 0.5rem; }
   .site-nav { gap: 1rem; }
+  .affiliate-cards { flex-direction: column; }
+  .affiliate-card { max-width: 100%; }
 }
