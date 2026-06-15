@@ -199,7 +199,8 @@ main {
 }
 .affiliate-card-title { font-weight: 700; margin-bottom: 0.3rem; }
 .affiliate-card-desc { font-size: 0.85rem; color: rgba(255,255,255,0.7); margin-bottom: 0.5rem; }
-.affiliate-card-store { font-size: 0.75rem; color: #FF9900; font-weight: 600; }
+.affiliate-card-store { font-size: 0.75rem; color: #FF9900; font-weight: 600; display: flex; align-items: center; gap: 0.3rem; }
+.affiliate-card-store img { height: 14px; width: auto; vertical-align: middle; }
 .affiliate-card-urgency {
   font-size: 0.65rem;
   color: #e0245e;
