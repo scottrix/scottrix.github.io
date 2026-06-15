@@ -217,34 +217,22 @@ main {
   flex-shrink: 0;
 }
  .fastmail-topbar {
-   background: linear-gradient(90deg, #1e1b4b, #312e81);
-   border: 1px solid rgba(139,92,246,0.3);
-   border-radius: 8px;
-   padding: 6px 16px;
-   display: flex;
-   align-items: center;
-   gap: 12px;
-   font-size: 0.8rem;
-   color: #c4b5fd;
-   text-decoration: none;
+   display: block;
    margin-bottom: 12px;
-   overflow: hidden;
-   position: relative;
-   min-height: 60px;
-   transition: background 0.2s, box-shadow 0.2s;
-   box-shadow: 0 2px 8px rgba(139,92,246,0.2);
+   text-decoration: none;
  }
- .fastmail-topbar:hover {
-   background: linear-gradient(90deg, #312e81, #4338ca);
-   box-shadow: 0 4px 16px rgba(139,92,246,0.35);
- }
- .fastmail-topbar-banner {
-   width: 48px;
-   height: 48px;
+ .fastmail-topbar img {
+   display: block;
+   width: 100%;
+   max-width: 970px;
+   height: auto;
    border-radius: 8px;
-   object-fit: cover;
-   flex-shrink: 0;
-}
+   transition: box-shadow 0.2s, transform 0.15s;
+ }
+ .fastmail-topbar:hover img {
+   box-shadow: 0 4px 16px rgba(139,92,246,0.35);
+   transform: translateY(-1px);
+ }
  .fastmail-topbar-icon {
    width: 20px;
    height: 20px;
