@@ -227,6 +227,7 @@ main {
    max-width: 970px;
    height: auto;
    border-radius: 8px;
+   margin: 0 auto;
    transition: box-shadow 0.2s, transform 0.15s;
  }
  .fastmail-topbar:hover img {
