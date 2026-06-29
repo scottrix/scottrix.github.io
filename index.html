@@ -14,6 +14,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://scottrix.github.io/">
 <meta property="og:site_name" content="Scottrix">
+<meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Scottrix - Free Online Developer Tools, Financial Calculators &amp; GCSE Revision">
 <meta name="twitter:description" content="Free online tools: 30+ developer utilities, financial calculators, and GCSE revision notes. All client-side, fast &amp; private.">
@@ -262,14 +263,14 @@
     <a href="https://www.amazon.co.uk/s?k=JavaScript+programming+books&tag=scottrix-21" class="affiliate-card" target="_blank" rel="nofollow noopener">
       <div class="affiliate-card-title">Browse JavaScript Programming Books →</div>
       <div class="affiliate-card-desc">Browse essential JavaScript books on Amazon</div>
-      <div class="affiliate-card-store"><img src="amazon-smile.svg" alt=""> amazon.co.uk</div>
+      <div class="affiliate-card-store"><img src="amazon-smile.svg" alt="Amazon"> amazon.co.uk</div>
     
     <div class="affiliate-card-urgency">Essential for 2026 exams</div>
   </a>
     <a href="https://www.amazon.co.uk/s?k=personal+finance+money+books&tag=scottrix-21" class="affiliate-card" target="_blank" rel="nofollow noopener">
       <div class="affiliate-card-title">Find Personal Finance Books →</div>
       <div class="affiliate-card-desc">Browse wealth and money management books on Amazon</div>
-      <div class="affiliate-card-store"><img src="amazon-smile.svg" alt=""> amazon.co.uk</div>
+      <div class="affiliate-card-store"><img src="amazon-smile.svg" alt="Amazon"> amazon.co.uk</div>
     
     <div class="affiliate-card-urgency">Essential for 2026 exams</div>
   </a>
@@ -280,6 +281,16 @@
     </a>
   </div>
   <div class="affiliate-disclaimer">We may earn a commission if you purchase through these links.</div>
+</section>
+<section class="section share-section">
+<h2>Share this page</h2>
+<div class="share-buttons">
+<a class="share-btn share-twitter" href="https://twitter.com/intent/tweet?url=https://scottrix.github.io/&text=Scottrix%20-%20Free%20Online%20Tools%20%26%20GCSE%20Revision" target="_blank" rel="noopener" title="Share on Twitter">Twitter</a>
+<a class="share-btn share-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://scottrix.github.io/" target="_blank" rel="noopener" title="Share on Facebook">Facebook</a>
+<a class="share-btn share-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https://scottrix.github.io/" target="_blank" rel="noopener" title="Share on LinkedIn">LinkedIn</a>
+<a class="share-btn share-whatsapp" href="https://wa.me/?text=Scottrix%20-%20Free%20Online%20Tools%20%26%20GCSE%20Revision%20https://scottrix.github.io/" target="_blank" rel="noopener" title="Share on WhatsApp">WhatsApp</a>
+<a class="share-btn share-copy" href="#" data-url="https://scottrix.github.io/" title="Copy link">Copy Link</a>
+</div>
 </section>
 </main>
 
@@ -297,5 +308,8 @@
   <p>&copy; 2025 Scottrix. All tools are free and open source.</p>
 </footer>
 <script src="affiliate-images.js"></script>
+<script>
+document.querySelectorAll('.share-copy').forEach(function(btn){btn.addEventListener('click',function(e){e.preventDefault();var url=this.getAttribute('data-url');navigator.clipboard.writeText(url).then(function(){btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy Link'},2000)});});});
+</script>
 </body>
 </html>

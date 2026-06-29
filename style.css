@@ -265,3 +265,12 @@ main {
   .affiliate-cards { flex-direction: column; }
   .affiliate-card { max-width: 100%; }
 }
+.share-section { text-align: center; padding: 1.5rem 0; }
+.share-buttons { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; margin-top: 0.5rem; }
+.share-btn { display: inline-block; padding: 0.4rem 0.9rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600; text-decoration: none; color: #fff; transition: opacity 0.2s; }
+.share-btn:hover { opacity: 0.85; }
+.share-twitter { background: #1DA1F2; }
+.share-facebook { background: #1877F2; }
+.share-linkedin { background: #0A66C2; }
+.share-whatsapp { background: #25D366; color: #fff; }
+.share-copy { background: var(--card-bg, #1e293b); border: 1px solid var(--border, #334155); cursor: pointer; }

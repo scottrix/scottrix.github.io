@@ -12,6 +12,11 @@
 <meta property="og:description" content="Free, privacy-respecting developer tools, financial calculators, and GCSE revision notes. All open source.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://scottrix.github.io/about.html">
+<meta property="og:site_name" content="Scottrix">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="About Scottrix">
+<meta name="twitter:description" content="Free, privacy-respecting developer tools, financial calculators, and GCSE revision notes. All open source.">
 </head>
 <body>
 <header class="site-header">
@@ -87,6 +92,16 @@
   <h2>Affiliate Disclosure</h2>
   <p>Some links on our sites are affiliate links, meaning we may earn a small commission if you make a purchase through them — at no extra cost to you. This includes links to Amazon products and our email partner, <a href="https://join.fastmail.com/0d63b2d52105">Fastmail</a>. We only recommend products and services we genuinely believe are useful. Affiliate income helps us keep all our tools free and ad-light. Thank you for your support.</p>
 </section>
+<section class="section share-section">
+<h2>Share this page</h2>
+<div class="share-buttons">
+<a class="share-btn share-twitter" href="https://twitter.com/intent/tweet?url=https://scottrix.github.io/about.html&text=About%20Scottrix" target="_blank" rel="noopener" title="Share on Twitter">Twitter</a>
+<a class="share-btn share-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://scottrix.github.io/about.html" target="_blank" rel="noopener" title="Share on Facebook">Facebook</a>
+<a class="share-btn share-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https://scottrix.github.io/about.html" target="_blank" rel="noopener" title="Share on LinkedIn">LinkedIn</a>
+<a class="share-btn share-whatsapp" href="https://wa.me/?text=About%20Scottrix%20https://scottrix.github.io/about.html" target="_blank" rel="noopener" title="Share on WhatsApp">WhatsApp</a>
+<a class="share-btn share-copy" href="#" data-url="https://scottrix.github.io/about.html" title="Copy link">Copy Link</a>
+</div>
+</section>
 </article>
 </main>
 
@@ -105,5 +120,8 @@
   <p>&copy; 2025 Scottrix. All tools are free and open source.</p>
 </footer>
 <script src="affiliate-images.js"></script>
+<script>
+document.querySelectorAll('.share-copy').forEach(function(btn){btn.addEventListener('click',function(e){e.preventDefault();var url=this.getAttribute('data-url');navigator.clipboard.writeText(url).then(function(){btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy Link'},2000)});});});
+</script>
 </body>
 </html>
