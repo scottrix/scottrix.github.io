@@ -142,6 +142,19 @@ main {
   background: rgba(74, 144, 217, 0.15);
   border-color: rgba(74, 144, 217, 0.3);
 }
+a.tool-tag { cursor: pointer; }
+.browse-cta { margin: 1.2rem 0 0; font-size: 1rem; }
+.browse-cta a {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 6px;
+  background: #4A90D9;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.browse-cta a:hover { background: #5BA0EA; }
 
 /* FAQ */
 .faq-item { margin-bottom: 1rem; }
