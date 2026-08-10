@@ -2,14 +2,18 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
     <loc>https://scottrix.github.io/sitemap-1.xml</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-08-10</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://scottrix.github.io/sitemap-2.xml</loc>
-    <lastmod>2026-06-15</lastmod>
+    <loc>https://scottrix.github.io/devtools/sitemap.xml</loc>
+    <lastmod>2026-08-10</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://scottrix.github.io/sitemap-3.xml</loc>
-    <lastmod>2026-06-15</lastmod>
+    <loc>https://scottrix.github.io/fintools/sitemap.xml</loc>
+    <lastmod>2026-08-10</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://scottrix.github.io/gcserevise/sitemap.xml</loc>
+    <lastmod>2026-08-10</lastmod>
   </sitemap>
 </sitemapindex>
