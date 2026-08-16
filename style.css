@@ -235,6 +235,9 @@ a.tool-tag { cursor: pointer; }
    margin-bottom: 12px;
    text-decoration: none;
  }
+ .fastmail-topbar[hidden] {
+   display: none !important;
+ }
  .fastmail-topbar img {
    display: block;
    width: 100%;
