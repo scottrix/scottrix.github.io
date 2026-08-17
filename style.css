@@ -102,6 +102,8 @@ main {
 .link-card--fintools:hover { background: rgba(39, 174, 96, 0.2); border-color: #27ae60; }
 .link-card--gcserevise { color: #e67e22; }
 .link-card--gcserevise:hover { background: rgba(230, 126, 34, 0.2); border-color: #e67e22; }
+.link-card--easyplaytv { color: #e0245e; }
+.link-card--easyplaytv:hover { background: rgba(224, 36, 94, 0.2); border-color: #e0245e; }
 
 /* Content sections */
 .content-section {

@@ -3,7 +3,7 @@
 sitemap_gen.py - Per-repo sitemap.xml generator with per-URL lastmod derived
 from each file's last git commit date.
 
-Designed for the 4 scottrix.github.io subsite repos. Auto-detects which repo
+Designed for the 5 scottrix.github.io subsite repos. Auto-detects which repo
 it is running in by inspecting the current directory's git remote URL.
 
 Per-repo behaviour:
@@ -66,6 +66,7 @@ def enumerate_html(repo_root):
         'devtools':           '/devtools',
         'fintools':           '/fintools',
         'gcserevise':         '/gcserevise',
+        'EasyPlayTV-docs':    '/EasyPlayTV-docs',
     }
     if repo_name not in subpath_map:
         raise SystemExit(f'Unknown repo: {repo_name}')
@@ -179,6 +180,7 @@ def generate_for_repo(repo_root, check_only=False):
             (f'{BASE_URL}/devtools/sitemap.xml', sub_lastmod),
             (f'{BASE_URL}/fintools/sitemap.xml', sub_lastmod),
             (f'{BASE_URL}/gcserevise/sitemap.xml', sub_lastmod),
+            (f'{BASE_URL}/EasyPlayTV-docs/sitemap.xml', sub_lastmod),
         ]
         plan.append((repo_root / 'sitemap.xml', render_sitemapindex(idx)))
 
@@ -192,6 +194,14 @@ def generate_for_repo(repo_root, check_only=False):
                      render_urlset(entries, indent='    ', changefreq=True)))
 
     elif repo_name == 'gcserevise':
+        entries = []
+        for p, public, prio, cf in enumerate_html(repo_root):
+            lm = git_last_date(p, repo_root)
+            entries.append((public, lm, prio, cf))
+        plan.append((repo_root / 'sitemap.xml',
+                     render_urlset(entries, indent='  ', changefreq=False)))
+
+    elif repo_name == 'EasyPlayTV-docs':
         entries = []
         for p, public, prio, cf in enumerate_html(repo_root):
             lm = git_last_date(p, repo_root)

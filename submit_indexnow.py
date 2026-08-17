@@ -2,7 +2,7 @@
 """
 submit_indexnow.py - Bulk-submit URLs to IndexNow (Bing, Yandex, Seznam, Naver).
 
-All four scottrix.github.io subsites (root, /devtools/, /fintools/, /gcserevise/)
+All five scottrix.github.io subsites (root, /devtools/, /fintools/, /gcserevise/, /EasyPlayTV-docs/)
 live on the same host, so a single key file at the root covers every URL.
 
 Usage:
@@ -39,6 +39,7 @@ REPO_ROOTS = [
     (Path('/home/scott/src/devtools'),           '/devtools'),
     (Path('/home/scott/src/fintools'),           '/fintools'),
     (Path('/home/scott/src/gcserevise'),         '/gcserevise'),
+    (Path('/home/scott/src/EasyPlayTV-docs'),     '/EasyPlayTV-docs'),
 ]
 
 
@@ -158,7 +159,7 @@ def main():
         print(f'Delta mode: {len(urls)} URL(s) mapped from given paths')
     else:
         urls = enumerate_all_urls()
-        print(f'Full mode: {len(urls)} URL(s) enumerated across 4 repo roots')
+        print(f'Full mode: {len(urls)} URL(s) enumerated across 5 repo roots')
 
     if not urls:
         print('No URLs to submit. Exiting.')
