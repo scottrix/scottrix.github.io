@@ -8,43 +8,43 @@
           "topics": [
             {
               "title": "Algebraic Fundamentals",
-              "learningObjectives": ["Simplify algebraic expressions", "Factorise quadratic expressions", "Solve linear and quadratic equations"],
-              "keyPoints": ["Collect like terms", "Difference of two squares", "Quadratic formula"],
-              "exampleQuestion": "Factorise x² - 5x + 6",
+              "learningObjectives": ["Simplify algebraic expressions","Factorise quadratic expressions","Solve linear and quadratic equations"],
+              "keyPoints": ["Collect like terms","Difference of two squares","Quadratic formula"],
+              "exampleQuestion": "Factorise x\u00b2 - 5x + 6",
               "modelAnswer": "(x - 2)(x - 3)",
-              "practiceQuestions": ["Factorise x² + 7x + 10", "Solve x² - 4 = 0", "Expand (x + 3)(x - 2)"]
+              "practiceQuestions": ["Factorise x\u00b2 + 7x + 10","Solve x\u00b2 - 4 = 0","Expand (x + 3)(x - 2)"]
             },
             {
               "title": "Coordinate Geometry",
-              "learningObjectives": ["Find equation of a line", "Calculate gradient", "Determine intersection of lines"],
-              "keyPoints": ["Gradient formula y = mx + c", "Two-point form", "Parallel/perpendicular gradients"],
+              "learningObjectives": ["Find equation of a line","Calculate gradient","Determine intersection of lines"],
+              "keyPoints": ["Gradient formula y = mx + c","Two‑point form","Parallel/perpendicular gradients"],
               "exampleQuestion": "Find the equation of the line through (1,2) and (3,6)",
               "modelAnswer": "y = 2x",
-              "practiceQuestions": ["Find line through (0,0) and (2,5)", "Determine if lines y=2x+1 and y=2x-3 are parallel", "Find intersection of y = x+1 and y = -x+3"]
+              "practiceQuestions": ["Find line through (0,0) and (2,5)","Determine if lines y=2x+1 and y=2x-3 are parallel","Find intersection of y = x+1 and y = -x+3"]
             },
             {
               "title": "Differentiation",
-              "learningObjectives": ["Differentiate polynomials", "Find stationary points", "Apply second derivative test"],
-              "keyPoints": ["Power rule", "Stationary point = f'(x)=0", "Second derivative test (max/min/inflection)"],
-              "exampleQuestion": "Differentiate f(x) = 3x³ - 5x² + 2x",
-              "modelAnswer": "f'(x) = 9x² - 10x + 2",
-              "practiceQuestions": ["Differentiate x⁴ - 3x²", "Find stationary points of y = x³ - 3x", "Classify each stationary point"]
+              "learningObjectives": ["Differentiate polynomials","Find stationary points","Apply second derivative test"],
+              "keyPoints": ["Power rule","Stationary point = f'(x)=0","Second derivative test (max/min/inflection)"],
+              "exampleQuestion": "Differentiate f(x) = 3x\u00b3 - 5x\u00b2 + 2x",
+              "modelAnswer": "f'(x) = 9x\u00b2 - 10x + 2",
+              "practiceQuestions": ["Differentiate x\u00b4 - 3x\u00b2","Find stationary points of y = x\u00b3 - 3x","Classify each stationary point"]
             },
             {
               "title": "Integration",
-              "learningObjectives": ["Integrate polynomials", "Definite integrals", "Area under a curve"],
-              "keyPoints": ["Increase power by 1 then divide", "∫axⁿ dx = axⁿ⁺¹/(n+1) + C", "∫ₐᵇ f(x)dx"],
-              "exampleQuestion": "Integrate ∫(4x³ - 2x) dx",
-              "modelAnswer": "x⁴ - x² + C",
-              "practiceQuestions": ["∫(3x² + 5x) dx", "Area under y = x² from x=0 to x=2", "∫₁³ (2x + 1) dx"]
+              "learningObjectives": ["Integrate polynomials","Definite integrals","Area under a curve"],
+              "keyPoints": ["Increase power by 1 then divide","∫ₐᵇ f(x)dx = F(b)-F(a)","Area between curve and x‑axis"],
+              "exampleQuestion": "Integrate ∫(4x\u00b3 - 2x) dx",
+              "modelAnswer": "x\u00b4 - x\u00b2 + C",
+              "practiceQuestions": ["∫(3x\u00b2 + 5x) dx","Area under y = x\u00b2 from x=0 to x=2","∫₁³ (2x + 1) dx"]
             },
             {
               "title": "Trigonometry",
-              "learningObjectives": ["Use sine/cosine rules", "Sketch trig graphs", "Solve trig equations"],
-              "keyPoints": ["SOH CAH TOA", "sin²θ + cos²θ = 1", "Graph period and amplitude"],
+              "learningObjectives": ["Use sine/cosine rules","Sketch trig graphs","Solve trig equations"],
+              "keyPoints": ["SOH CAH TOA","sin²θ + cos²θ = 1","Graph period and amplitude"],
               "exampleQuestion": "Solve sinθ = √3/2 for 0 ≤ θ < 2π",
               "modelAnswer": "θ = π/3, 2π/3",
-              "practiceQuestions": ["Solve cosθ = -1/2", "Sketch y = 2 sin x for 0≤x≤2π", "Use sine rule to find missing side in triangle"]
+              "practiceQuestions": ["Solve cosθ = -1/2","Sketch y = 2 sin x for 0≤x≤2π","Use sine rule to find missing side in triangle"]
             }
           ]
         },
@@ -53,167 +53,281 @@
           "topics": [
             {
               "title": "Algebraic Expressions",
-              "learningObjectives": ["Simplify algebraic expressions", "Expand brackets", "Factorise quadratic expressions"],
-              "keyPoints": ["Collecting like terms", "Difference of two squares", "Factorising by grouping"],
+              "learningObjectives": ["Simplify algebraic expressions","Expand brackets","Factorise quadratic expressions"],
+              "keyPoints": ["Collecting like terms","Difference of two squares","Factorising by grouping"],
               "exampleQuestion": "Simplify (2x + 3)(x - 4)",
-              "modelAnswer": "2x² - 5x - 12",
-              "practiceQuestions": ["Expand (x + 5)(x - 2)", "Factorise x² + 6x + 9", "Simplify (3a²b)(4ab³)"]
+              "modelAnswer": "2x\u00b2 - 5x - 12",
+              "practiceQuestions": ["Expand (x + 5)(x - 2)","Factorise x\u00b2 + 6x + 9","Simplify (3a\u00b2b)(4ab\u00b3)"]
             },
             {
               "title": "Quadratic Equations",
-              "learningObjectives": ["Solve quadratic equations by factorising", "Complete the square", "Use the quadratic formula"],
-              "keyPoints": ["Factorising when a=1", "Complete the square form (x + p)² + q", "Quadratic formula x = (-b ± √(b²‑4ac)) / 2a"],
-              "exampleQuestion": "Solve x² - 5x + 6 = 0",
-              "modelAnswer": "x = 2 or x = 3",
-              "practiceQuestions": ["Solve 2x² + 7x + 3 = 0 by factorising", "Complete the square for x² + 4x - 5 = 0", "Use the quadratic formula for 3x² - x - 2 = 0"]
+              "learningObjectives": ["Solve quadratic equations by factorising","Complete the square","Use the quadratic formula"],
+              "keyPoints": ["Factorising when a=1","Complete the square form (x + p)² + q","Quadratic formula x = (-b ± √(b²‑4ac)) / 2a"],
+              "exampleQuestion": "Solve 2x\u00b2 + 7x + 3 = 0 by factorising",
+              "modelAnswer": "x = -3 or x = -1/2",
+              "practiceQuestions": ["Solve 3x\u00b2 + 7x + 3 = 0 by factorising","Complete the square for 2x\u00b2 + 5x - 3 = 0","Use the quadratic formula for 5x\u00b2 - x - 2 = 0"]
             },
             {
               "title": "Coordinate Geometry",
-              "learningObjectives": ["Find the equation of a line", "Calculate the distance between two points", "Determine the midpoint of a segment"],
-              "keyPoints": ["Gradient m = (y₂‑y₁)/(x₂‑x₁)", "Line equation y = mx + c", "Distance formula √((x₂‑x₁)² + (y₂‑y₁)²)", "Midpoint ((x₁+x₂)/2, (y₁+y₂)/2)"],
+              "learningObjectives": ["Find equation of a line","Calculate the distance between two points","Determine the midpoint of a segment"],
+              "keyPoints": ["Gradient m = (y₂‑y₁)/(x₂‑x₁)","Line equation y = mx + c","Distance formula √((x₂‑x₁)² + (y₂‑y₁)²)","Midpoint ((x₁+x₂)/2, (y₁+y₂)/2)"],
               "exampleQuestion": "Find the distance between (1,2) and (4,6)",
               "modelAnswer": "√((4‑1)² + (6‑2)²) = √(9+16) = 5",
-              "practiceQuestions": ["Find the midpoint of the segment joining (‑2,3) and (4,‑1)", "Find the equation of the line with gradient 3 passing through (2,‑1)"]
+              "practiceQuestions": ["Find the midpoint of the segment joining (‑2,3) and (4,‑1)","Find the equation of the line with gradient 3 passing through (2,‑1)"]
             },
             {
               "title": "Differentiation",
-              "learningObjectives": ["Differentiate polynomials", "Find gradients of tangents", "Determine stationary points"],
-              "keyPoints": ["Power rule d/dx(xⁿ) = nxⁿ⁻¹", "Stationary point where f'(x)=0", "Second derivative test for max/min"],
-              "exampleQuestion": "Differentiate y = 3x⁴ - 2x³ + x",
-              "modelAnswer": "dy/dx = 12x³ - 6x² + 1",
-              "practiceQuestions": ["Differentiate x⁵ - 4x³", "Find stationary points of y = x³ - 3x²", "Classify each stationary point using the second derivative"]
+              "learningObjectives": ["Differentiate polynomials","Find gradients of tangents","Determine stationary points"],
+              "keyPoints": ["Power rule d/dx(xⁿ) = nxⁿ⁻¹","Stationary point where f'(x)=0","Second derivative test for max/min"],
+              "exampleQuestion": "Differentiate y = 3x\u00b4 - 2x\u00b3 + x",
+              "modelAnswer": "dy/dx = 12x\u00b3 - 6x\u00b2 + 1",
+              "practiceQuestions": ["Differentiate x\u00b5 - 4x\u00b3","Find stationary points of y = x\u00b3 - 3x","Classify each stationary point using the second derivative"]
             },
             {
               "title": "Integration",
-              "learningObjectives": ["Integrate polynomials", "Evaluate definite integrals", "Find area under a curve"],
-              "keyPoints": ["Increase power by 1 then divide by new power", "∫ₐᵇ f(x)dx = F(b)‑F(a)", "Area between curve and x‑axis"],
-              "exampleQuestion": "Integrate ∫(2x³ - 5x) dx",
-              "modelAnswer": "x⁴/2 - 5x²/2 + C",
-              "practiceQuestions": ["∫(4x² + 3x) dx", "Evaluate ∫₀² (x² + 1) dx", "Find the area under y = x from x=0 to x=3"]
+              "learningObjectives": ["Integrate polynomials","Evaluate definite integrals","Find area under a curve"],
+              "keyPoints": ["Increase power by 1 then divide by new power","∫ₐᵇ f(x)dx = F(b)-F(a)","Area between curve and x‑axis"],
+              "exampleQuestion": "Integrate ∫(2x\u00b3 - 5x) dx",
+              "modelAnswer": "x\u00b4/2 - 5x\u00b2/2 + C",
+              "practiceQuestions": ["∫(4x\u00b2 + 3x) dx","Evaluate ∫₀² (x\u00b2 + 1) dx","Find the area under y = x from x=0 to x=3"]
             }
           ]
         },
         {
           "board": "OCR",
-          "topics": []
+          "topics": [
+            {
+              "title": "Algebraic Expressions",
+              "learningObjectives": ["Simplify algebraic expressions","Expand brackets","Factorise quadratic expressions"],
+              "keyPoints": ["Collecting like terms","Difference of two squares","Factorising by grouping"],
+              "exampleQuestion": "Simplify (2x + 3)(x - 4)",
+              "modelAnswer": "2x\u00b2 - 5x - 12",
+              "practiceQuestions": ["Expand (x + 5)(x - 2)","Factorise x\u00b2 + 6x + 9","Simplify (3a\u00b2b)(4ab\u00b3)"]
+            },
+            {
+              "title": "Quadratic Equations",
+              "learningObjectives": ["Solve quadratic equations by factorising","Complete the square","Use the quadratic formula"],
+              "keyPoints": ["Factorising when a=1","Complete the square form (x + p)² + q","Quadratic formula x = (-b ± √(b²‑4ac)) / 2a"],
+              "exampleQuestion": "Solve x\u00b2 - 5x + 6 = 0",
+              "modelAnswer": "x = 2 or x = 3",
+              "practiceQuestions": ["Solve 2x\u00b2 + 7x + 3 = 0 by factorising","Complete the square for x\u00b2 + 4x - 5 = 0","Use the quadratic formula for 3x\u00b2 - x - 2 = 0"]
+            },
+            {
+              "title": "Coordinate Geometry",
+              "learningObjectives": ["Find equation of a line","Calculate the distance between two points","Determine the midpoint of a segment"],
+              "keyPoints": ["Gradient m = (y₂‑y₁)/(x₂‑x₁)","Line equation y = mx + c","Distance formula √((x₂‑x₁)² + (y₂‑y₁)²)","Midpoint ((x₁+x₂)/2, (y₁+y₂)/2)"],
+              "exampleQuestion": "Find the distance between (1,2) and (4,6)",
+              "modelAnswer": "√((4‑1)² + (6‑2)²) = √(9+16) = 5",
+              "practiceQuestions": ["Find the midpoint of the segment joining (‑2,3) and (4,‑1)","Find the equation of the line with gradient 3 passing through (2,‑1)"]
+            },
+            {
+              "title": "Differentiation",
+              "learningObjectives": ["Differentiate polynomials","Find gradients of tangents","Determine stationary points"],
+              "keyPoints": ["Power rule d/dx(xⁿ) = nxⁿ⁻¹","Stationary point where f'(x)=0","Second derivative test for max/min"],
+              "exampleQuestion": "Differentiate y = 3x\u00b4 - 2x\u00b3 + x",
+              "modelAnswer": "dy/dx = 12x\u00b3 - 6x\u00b2 + 1",
+              "practiceQuestions": ["Differentiate x\u00b5 - 4x\u00b3","Find stationary points of y = x\u00b3 - 3x","Classify each stationary point using the second derivative"]
+            },
+            {
+              "title": "Integration",
+              "learningObjectives": ["Integrate polynomials","Evaluate definite integrals","Find area under a curve"],
+              "keyPoints": ["Increase power by 1 then divide by new power","∫ₐᵇ f(x)dx = F(b)-F(a)","Area between curve and x‑axis"],
+              "exampleQuestion": "Integrate ∫(2x\u00b3 - 5x) dx",
+              "modelAnswer": "x\u00b4/2 - 5x\u00b2/2 + C",
+              "practiceQuestions": ["∫(4x\u00b2 + 3x) dx","Evaluate ∫₀² (x\u00b2 + 1) dx","Find the area under y = x from x=0 to x=3"]
+            }
+          ]
         },
         {
           "board": "WJEC",
-          "topics": []
-        },
-        {
-          "board": "CCEA",
-          "topics": []
+          "topics": [
+            {
+              "title": "Algebraic Expressions",
+              "learningObjectives": ["Simplify algebraic expressions","Expand brackets","Factorise quadratic expressions"],
+              "keyPoints": ["Collecting like terms","Difference of two squares","Factorising by grouping"],
+              "exampleQuestion": "Simplify (2x + 3)(x - 4)",
+              "modelAnswer": "2x\u00b2 - 5x - 12",
+              "practiceQuestions": ["Expand (x + 5)(x - 2)","Factorise x\u00b2 + 6x + 9","Simplify (3a\u00b2b)(4ab\u00b3)"]
+            },
+            {
+              "title": "Quadratic Equations",
+              "learningObjectives": ["Solve quadratic equations by factorising","Complete the square","Use the quadratic formula"],
+              "keyPoints": ["Factorising when a=1","Complete the square form (x + p)² + q","Quadratic formula x = (-b ± √(b²‑4ac)) / 2a"],
+              "exampleQuestion": "Solve x\u00b2 - 5x + 6 = 0",
+              "modelAnswer": "x = 2 or x = 3",
+              "practiceQuestions": ["Solve 2x\u00b2 + 7x + 3 = 0 by factorising","Complete the square for x\u00b2 + 4x - 5 = 0","Use the quadratic formula for 3x\u00b2 - x - 2 = 0"]
+            },
+            {
+              "title": "Coordinate Geometry",
+              "learningObjectives": ["Find equation of a line","Calculate the distance between two points","Determine the midpoint of a segment"],
+              "keyPoints": ["Gradient m = (y₂‑y₁)/(x₂‑x₁)","Line equation y = mx + c","Distance formula √((x₂‑x₁)² + (y₂‑y₁)²)","Midpoint ((x₁+x₂)/2, (y₁+y₂)/2)"],
+              "exampleQuestion": "Find the distance between (1,2) and (4,6)",
+              "modelAnswer": "√((4‑1)² + (6‑2)²) = √(9+16) = 5",
+              "practiceQuestions": ["Find the midpoint of the segment joining (‑2,3) and (4,‑1)","Find the equation of the line with gradient 3 passing through (2,‑1)"]
+            },
+            {
+              "title": "Differentiation",
+              "learningObjectives": ["Differentiate polynomials","Find gradients of tangents","Determine stationary points"],
+              "keyPoints": ["Power rule d/dx(xⁿ) = nxⁿ⁻¹","Stationary point where f'(x)=0","Second derivative test for max/min"],
+              "exampleQuestion": "Differentiate y = 3x\u00b4 - 2x\u00b3 + x",
+              "modelAnswer": "dy/dx = 12x\u00b3 - 6x\u00b2 + 1",
+              "practiceQuestions": ["Differentiate x\u00b5 - 4x\u00b3","Find stationary points of y = x\u00b3 - 3x","Classify each stationary point using the second derivative"]
+            },
+            {
+              "title": "Integration",
+              "learningObjectives": ["Integrate polynomials","Evaluate definite integrals","Find area under a curve"],
+              "keyPoints": ["Increase power by 1 then divide by new power","∫ₐᵇ f(x)dx = F(b)-F(a)","Area between curve and x‑axis"],
+              "exampleQuestion": "Integrate ∫(2x\u00b3 - 5x) dx",
+              "modelAnswer": "x\u00b4/2 - 5x\u00b2/2 + C",
+              "practiceQuestions": ["∫(4x\u00b2 + 3x) dx","Evaluate ∫₀² (x\u00b2 + 1) dx","Find the area under y = x from x=0 to x=3"]
+            }
+          ]
         }
       ]
     },
     {
       "name": "Further Mathematics",
       "boards": [
-        {"board": "AQA", "topics": []},
-        {"board": "Edexcel", "topics": []},
-        {"board": "OCR", "topics": []},
-        {"board": "WJEC", "topics": []}
-      ]
+        {"board": "AQA", "topics": [
+            {
+              "title": "Further Pure Mathematics",
+              "learningObjectives": ["Advanced algebraic techniques", "Complex numbers", "Advanced trigonometry"],
+              "keyPoints": ["Complex number operations", "De Moivre's theorem", "Advanced proof techniques"],
+              "exampleQuestion": "Simplify (1 + i)^2",
+              "modelAnswer": "(1 + i)^2 = 2i",
+              "practiceQuestions": ["Add complex numbers a+bi + c+di", "Multiply complex numbers", "Solve z^2 + 1 = 0"]
+            }
+          ]},
+        {"board": "Edexcel", "topics": [
+            {
+              "title": "Further Pure Mathematics",
+              "learningObjectives": ["Advanced algebraic techniques", "Complex numbers", "Advanced trigonometry"],
+              "keyPoints": ["Complex number operations", "De Moivre's theorem", "Advanced proof techniques"],
+              "exampleQuestion": "Simplify (1 + i)^2",
+              "modelAnswer": "(1 + i)^2 = 2i",
+              "practiceQuestions": ["Add complex numbers a+bi + c+di", "Multiply complex numbers", "Solve z^2 + 1 = 0"]
+            }
+          ]},
+        {"board": "OCR", "topics": [
+            {
+              "title": "Further Pure Mathematics",
+              "learningObjectives": ["Advanced algebraic techniques", "Complex numbers", "Advanced trigonometry"],
+              "keyPoints": ["Complex number operations", "De Moivre's theorem", "Advanced proof techniques"],
+              "exampleQuestion": "Simplify (1 + i)^2",
+              "modelAnswer": "(1 + i)^2 = 2i",
+              "practiceQuestions": ["Add complex numbers a+bi + c+di", "Multiply complex numbers", "Solve z^2 + 1 = 0"]
+            }
+          ]},
+        {"board": "WJEC", "topics": [
+            {
+              "title": "Further Pure Mathematics",
+              "learningObjectives": ["Advanced algebraic techniques", "Complex numbers", "Advanced trigonometry"],
+              "keyPoints": ["Complex number operations", "De Moivre's theorem", "Advanced proof techniques"],
+              "exampleQuestion": "Simplify (1 + i)^2",
+              "modelAnswer": "(1 + i)^2 = 2i",
+              "practiceQuestions": ["Add complex numbers a+bi + c+di", "Multiply complex numbers", "Solve z^2 + 1 = 0"]
+            }
+          ]}
+      ],
     },
     {
       "name": "Physics",
       "boards": [
-        {"board": "AQA", "topics": []},
-        {"board": "Edexcel", "topics": []},
-        {"board": "OCR", "topics": []},
-        {"board": "WJEC", "topics": []},
-        {"board": "CCEA", "topics": []}
+        {"board": "AQA", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "Edexcel", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "OCR", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "WJEC", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "CCEA", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]}
       ]
     },
     {
       "name": "Chemistry",
       "boards": [
-        {"board": "AQA", "topics": []},
-        {"board": "Edexcel", "topics": []},
-        {"board": "OCR", "topics": []},
-        {"board": "WJEC", "topics": []},
-        {"board": "CCEA", "topics": []}
+        {"board": "AQA", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "Edexcel", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "OCR", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "WJEC", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "CCEA", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]}
       ]
     },
     {
       "name": "Biology",
       "boards": [
-        {"board": "AQA", "topics": []},
-        {"board": "Edexcel", "topics": []},
-        {"board": "OCR", "topics": []},
-        {"board": "WJEC", "topics": []},
-        {"board": "CCEA", "topics": []}
+        {"board": "AQA", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "Edexcel", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "OCR", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "WJEC", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "CCEA", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]}
       ]
     },
     {
       "name": "English Literature",
       "boards": [
-        {"board": "AQA", "topics": []},
-        {"board": "Edexcel", "topics": []},
-        {"board": "OCR", "topics": []},
-        {"board": "WJEC", "topics": []},
-        {"board": "CCEA", "topics": []}
+        {"board": "AQA", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "Edexcel", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "OCR", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "WJEC", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "CCEA", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]}
       ]
     },
     {
       "name": "History",
       "boards": [
-        {"board": "AQA", "topics": []},
-        {"board": "Edexcel", "topics": []},
-        {"board": "OCR", "topics": []},
-        {"board": "WJEC", "topics": []},
-        {"board": "CCEA", "topics": []}
+        {"board": "AQA", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "Edexcel", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "OCR", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "WJEC", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "CCEA", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]}
       ]
     },
     {
       "name": "Geography",
       "boards": [
-        {"board": "AQA", "topics": []},
-        {"board": "Edexcel", "topics": []},
-        {"board": "OCR", "topics": []},
-        {"board": "WJEC", "topics": []},
-        {"board": "CCEA", "topics": []}
+        {"board": "AQA", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "Edexcel", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "OCR", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "WJEC", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "CCEA", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]}
       ]
     },
     {
       "name": "Economics",
       "boards": [
-        {"board": "AQA", "topics": []},
-        {"board": "Edexcel", "topics": []},
-        {"board": "OCR", "topics": []},
-        {"board": "WJEC", "topics": []},
-        {"board": "CCEA", "topics": []}
+        {"board": "AQA", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "Edexcel", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "OCR", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "WJEC", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "CCEA", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]}
       ]
     },
     {
       "name": "Business Studies",
       "boards": [
-        {"board": "AQA", "topics": []},
-        {"board": "Edexcel", "topics": []},
-        {"board": "OCR", "topics": []},
-        {"board": "WJEC", "topics": []},
-        {"board": "CCEA", "topics": []}
+        {"board": "AQA", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "Edexcel", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "OCR", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "WJEC", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "CCEA", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]}
       ]
     },
     {
       "name": "Computer Science",
       "boards": [
-        {"board": "AQA", "topics": []},
-        {"board": "Edexcel", "topics": []},
-        {"board": "OCR", "topics": []},
-        {"board": "WJEC", "topics": []},
-        {"board": "CCEA", "topics": []}
+        {"board": "AQA", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "Edexcel", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "OCR", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "WJEC", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "CCEA", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]}
       ]
     },
     {
       "name": "Psychology",
       "boards": [
-        {"board": "AQA", "topics": []},
-        {"board": "Edexcel", "topics": []},
-        {"board": "OCR", "topics": []},
-        {"board": "WJEC", "topics": []},
-        {"board": "CCEA", "topics": []}
+        {"board": "AQA", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "Edexcel", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "OCR", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "WJEC", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]},
+        {"board": "CCEA", "topics": [{ "title": "Placeholder", "learningObjectives": [], "keyPoints": [], "exampleQuestion": "", "modelAnswer": "", "practiceQuestions": [] }]}
       ]
     }
   ]
