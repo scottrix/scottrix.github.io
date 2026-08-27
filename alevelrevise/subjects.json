@@ -50,7 +50,48 @@
         },
         {
           "board": "Edexcel",
-          "topics": []
+          "topics": [
+            {
+              "title": "Algebraic Expressions",
+              "learningObjectives": ["Simplify algebraic expressions", "Expand brackets", "Factorise quadratic expressions"],
+              "keyPoints": ["Collecting like terms", "Difference of two squares", "Factorising by grouping"],
+              "exampleQuestion": "Simplify (2x + 3)(x - 4)",
+              "modelAnswer": "2x² - 5x - 12",
+              "practiceQuestions": ["Expand (x + 5)(x - 2)", "Factorise x² + 6x + 9", "Simplify (3a²b)(4ab³)"]
+            },
+            {
+              "title": "Quadratic Equations",
+              "learningObjectives": ["Solve quadratic equations by factorising", "Complete the square", "Use the quadratic formula"],
+              "keyPoints": ["Factorising when a=1", "Complete the square form (x + p)² + q", "Quadratic formula x = (-b ± √(b²‑4ac)) / 2a"],
+              "exampleQuestion": "Solve x² - 5x + 6 = 0",
+              "modelAnswer": "x = 2 or x = 3",
+              "practiceQuestions": ["Solve 2x² + 7x + 3 = 0 by factorising", "Complete the square for x² + 4x - 5 = 0", "Use the quadratic formula for 3x² - x - 2 = 0"]
+            },
+            {
+              "title": "Coordinate Geometry",
+              "learningObjectives": ["Find the equation of a line", "Calculate the distance between two points", "Determine the midpoint of a segment"],
+              "keyPoints": ["Gradient m = (y₂‑y₁)/(x₂‑x₁)", "Line equation y = mx + c", "Distance formula √((x₂‑x₁)² + (y₂‑y₁)²)", "Midpoint ((x₁+x₂)/2, (y₁+y₂)/2)"],
+              "exampleQuestion": "Find the distance between (1,2) and (4,6)",
+              "modelAnswer": "√((4‑1)² + (6‑2)²) = √(9+16) = 5",
+              "practiceQuestions": ["Find the midpoint of the segment joining (‑2,3) and (4,‑1)", "Find the equation of the line with gradient 3 passing through (2,‑1)"]
+            },
+            {
+              "title": "Differentiation",
+              "learningObjectives": ["Differentiate polynomials", "Find gradients of tangents", "Determine stationary points"],
+              "keyPoints": ["Power rule d/dx(xⁿ) = nxⁿ⁻¹", "Stationary point where f'(x)=0", "Second derivative test for max/min"],
+              "exampleQuestion": "Differentiate y = 3x⁴ - 2x³ + x",
+              "modelAnswer": "dy/dx = 12x³ - 6x² + 1",
+              "practiceQuestions": ["Differentiate x⁵ - 4x³", "Find stationary points of y = x³ - 3x²", "Classify each stationary point using the second derivative"]
+            },
+            {
+              "title": "Integration",
+              "learningObjectives": ["Integrate polynomials", "Evaluate definite integrals", "Find area under a curve"],
+              "keyPoints": ["Increase power by 1 then divide by new power", "∫ₐᵇ f(x)dx = F(b)‑F(a)", "Area between curve and x‑axis"],
+              "exampleQuestion": "Integrate ∫(2x³ - 5x) dx",
+              "modelAnswer": "x⁴/2 - 5x²/2 + C",
+              "practiceQuestions": ["∫(4x² + 3x) dx", "Evaluate ∫₀² (x² + 1) dx", "Find the area under y = x from x=0 to x=3"]
+            }
+          ]
         },
         {
           "board": "OCR",
