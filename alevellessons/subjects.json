@@ -1,0 +1,52 @@
+{
+  "subjects": [
+    {
+      "name": "Mathematics",
+      "boards": ["AQA", "Edexcel", "OCR", "WJEC", "CCEA"]
+    },
+    {
+      "name": "Further Mathematics",
+      "boards": ["AQA", "Edexcel", "OCR", "WJEC"]
+    },
+    {
+      "name": "Physics",
+      "boards": ["AQA", "Edexcel", "OCR", "WJEC", "CCEA"]
+    },
+    {
+      "name": "Chemistry",
+      "boards": ["AQA", "Edexcel", "OCR", "WJEC", "CCEA"]
+    },
+    {
+      "name": "Biology",
+      "boards": ["AQA", "Edexcel", "OCR", "WJEC", "CCEA"]
+    },
+    {
+      "name": "English Literature",
+      "boards": ["AQA", "Edexcel", "OCR", "WJEC", "CCEA"]
+    },
+    {
+      "name": "History",
+      "boards": ["AQA", "Edexcel", "OCR", "WJEC", "CCEA"]
+    },
+    {
+      "name": "Geography",
+      "boards": ["AQA", "Edexcel", "OCR", "WJEC", "CCEA"]
+    },
+    {
+      "name": "Economics",
+      "boards": ["AQA", "Edexcel", "OCR", "WJEC", "CCEA"]
+    },
+    {
+      "name": "Business Studies",
+      "boards": ["AQA", "Edexcel", "OCR", "WJEC", "CCEA"]
+    },
+    {
+      "name": "Computer Science",
+      "boards": ["AQA", "Edexcel", "OCR", "WJEC", "CCEA"]
+    },
+    {
+      "name": "Psychology",
+      "boards": ["AQA", "Edexcel", "OCR", "WJEC", "CCEA"]
+    }
+  ]
+}
