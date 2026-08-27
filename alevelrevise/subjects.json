@@ -2,51 +2,178 @@
   "subjects": [
     {
       "name": "Mathematics",
-      "boards": ["AQA", "Edexcel", "OCR", "WJEC", "CCEA"]
+      "boards": [
+        {
+          "board": "AQA",
+          "topics": [
+            {
+              "title": "Algebraic Fundamentals",
+              "learningObjectives": ["Simplify algebraic expressions", "Factorise quadratic expressions", "Solve linear and quadratic equations"],
+              "keyPoints": ["Collect like terms", "Difference of two squares", "Quadratic formula"],
+              "exampleQuestion": "Factorise x² - 5x + 6",
+              "modelAnswer": "(x - 2)(x - 3)",
+              "practiceQuestions": ["Factorise x² + 7x + 10", "Solve x² - 4 = 0", "Expand (x + 3)(x - 2)"]
+            },
+            {
+              "title": "Coordinate Geometry",
+              "learningObjectives": ["Find equation of a line", "Calculate gradient", "Determine intersection of lines"],
+              "keyPoints": ["Gradient formula y = mx + c", "Two-point form", "Parallel/perpendicular gradients"],
+              "exampleQuestion": "Find the equation of the line through (1,2) and (3,6)",
+              "modelAnswer": "y = 2x",
+              "practiceQuestions": ["Find line through (0,0) and (2,5)", "Determine if lines y=2x+1 and y=2x-3 are parallel", "Find intersection of y = x+1 and y = -x+3"]
+            },
+            {
+              "title": "Differentiation",
+              "learningObjectives": ["Differentiate polynomials", "Find stationary points", "Apply second derivative test"],
+              "keyPoints": ["Power rule", "Stationary point = f'(x)=0", "Second derivative test (max/min/inflection)"],
+              "exampleQuestion": "Differentiate f(x) = 3x³ - 5x² + 2x",
+              "modelAnswer": "f'(x) = 9x² - 10x + 2",
+              "practiceQuestions": ["Differentiate x⁴ - 3x²", "Find stationary points of y = x³ - 3x", "Classify each stationary point"]
+            },
+            {
+              "title": "Integration",
+              "learningObjectives": ["Integrate polynomials", "Definite integrals", "Area under a curve"],
+              "keyPoints": ["Increase power by 1 then divide", "∫axⁿ dx = axⁿ⁺¹/(n+1) + C", "∫ₐᵇ f(x)dx"],
+              "exampleQuestion": "Integrate ∫(4x³ - 2x) dx",
+              "modelAnswer": "x⁴ - x² + C",
+              "practiceQuestions": ["∫(3x² + 5x) dx", "Area under y = x² from x=0 to x=2", "∫₁³ (2x + 1) dx"]
+            },
+            {
+              "title": "Trigonometry",
+              "learningObjectives": ["Use sine/cosine rules", "Sketch trig graphs", "Solve trig equations"],
+              "keyPoints": ["SOH CAH TOA", "sin²θ + cos²θ = 1", "Graph period and amplitude"],
+              "exampleQuestion": "Solve sinθ = √3/2 for 0 ≤ θ < 2π",
+              "modelAnswer": "θ = π/3, 2π/3",
+              "practiceQuestions": ["Solve cosθ = -1/2", "Sketch y = 2 sin x for 0≤x≤2π", "Use sine rule to find missing side in triangle"]
+            }
+          ]
+        },
+        {
+          "board": "Edexcel",
+          "topics": []
+        },
+        {
+          "board": "OCR",
+          "topics": []
+        },
+        {
+          "board": "WJEC",
+          "topics": []
+        },
+        {
+          "board": "CCEA",
+          "topics": []
+        }
+      ]
     },
     {
       "name": "Further Mathematics",
-      "boards": ["AQA", "Edexcel", "OCR", "WJEC"]
+      "boards": [
+        {"board": "AQA", "topics": []},
+        {"board": "Edexcel", "topics": []},
+        {"board": "OCR", "topics": []},
+        {"board": "WJEC", "topics": []}
+      ]
     },
     {
       "name": "Physics",
-      "boards": ["AQA", "Edexcel", "OCR", "WJEC", "CCEA"]
+      "boards": [
+        {"board": "AQA", "topics": []},
+        {"board": "Edexcel", "topics": []},
+        {"board": "OCR", "topics": []},
+        {"board": "WJEC", "topics": []},
+        {"board": "CCEA", "topics": []}
+      ]
     },
     {
       "name": "Chemistry",
-      "boards": ["AQA", "Edexcel", "OCR", "WJEC", "CCEA"]
+      "boards": [
+        {"board": "AQA", "topics": []},
+        {"board": "Edexcel", "topics": []},
+        {"board": "OCR", "topics": []},
+        {"board": "WJEC", "topics": []},
+        {"board": "CCEA", "topics": []}
+      ]
     },
     {
       "name": "Biology",
-      "boards": ["AQA", "Edexcel", "OCR", "WJEC", "CCEA"]
+      "boards": [
+        {"board": "AQA", "topics": []},
+        {"board": "Edexcel", "topics": []},
+        {"board": "OCR", "topics": []},
+        {"board": "WJEC", "topics": []},
+        {"board": "CCEA", "topics": []}
+      ]
     },
     {
       "name": "English Literature",
-      "boards": ["AQA", "Edexcel", "OCR", "WJEC", "CCEA"]
+      "boards": [
+        {"board": "AQA", "topics": []},
+        {"board": "Edexcel", "topics": []},
+        {"board": "OCR", "topics": []},
+        {"board": "WJEC", "topics": []},
+        {"board": "CCEA", "topics": []}
+      ]
     },
     {
       "name": "History",
-      "boards": ["AQA", "Edexcel", "OCR", "WJEC", "CCEA"]
+      "boards": [
+        {"board": "AQA", "topics": []},
+        {"board": "Edexcel", "topics": []},
+        {"board": "OCR", "topics": []},
+        {"board": "WJEC", "topics": []},
+        {"board": "CCEA", "topics": []}
+      ]
     },
     {
       "name": "Geography",
-      "boards": ["AQA", "Edexcel", "OCR", "WJEC", "CCEA"]
+      "boards": [
+        {"board": "AQA", "topics": []},
+        {"board": "Edexcel", "topics": []},
+        {"board": "OCR", "topics": []},
+        {"board": "WJEC", "topics": []},
+        {"board": "CCEA", "topics": []}
+      ]
     },
     {
       "name": "Economics",
-      "boards": ["AQA", "Edexcel", "OCR", "WJEC", "CCEA"]
+      "boards": [
+        {"board": "AQA", "topics": []},
+        {"board": "Edexcel", "topics": []},
+        {"board": "OCR", "topics": []},
+        {"board": "WJEC", "topics": []},
+        {"board": "CCEA", "topics": []}
+      ]
     },
     {
       "name": "Business Studies",
-      "boards": ["AQA", "Edexcel", "OCR", "WJEC", "CCEA"]
+      "boards": [
+        {"board": "AQA", "topics": []},
+        {"board": "Edexcel", "topics": []},
+        {"board": "OCR", "topics": []},
+        {"board": "WJEC", "topics": []},
+        {"board": "CCEA", "topics": []}
+      ]
     },
     {
       "name": "Computer Science",
-      "boards": ["AQA", "Edexcel", "OCR", "WJEC", "CCEA"]
+      "boards": [
+        {"board": "AQA", "topics": []},
+        {"board": "Edexcel", "topics": []},
+        {"board": "OCR", "topics": []},
+        {"board": "WJEC", "topics": []},
+        {"board": "CCEA", "topics": []}
+      ]
     },
     {
       "name": "Psychology",
-      "boards": ["AQA", "Edexcel", "OCR", "WJEC", "CCEA"]
+      "boards": [
+        {"board": "AQA", "topics": []},
+        {"board": "Edexcel", "topics": []},
+        {"board": "OCR", "topics": []},
+        {"board": "WJEC", "topics": []},
+        {"board": "CCEA", "topics": []}
+      ]
     }
   ]
 }

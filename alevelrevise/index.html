@@ -26,7 +26,7 @@
 
     <section class="site-section" id="subjects">
       <h2>Subjects</h2>
-      <p>Subjects and exam boards will be listed here soon. The <code>subjects.json</code> file contains the full catalogue.</p>
+      <div id="subjects-grid" class="subjects-grid"></div>
     </section>
 
     <section class="site-section" id="about">
@@ -36,6 +36,47 @@
   </main>
 
   <script src="subjects.json" type="application/json"></script>
-  <script src="app.js"></script>
+  <script>
+    const data = JSON.parse(document.querySelector('script[src="subjects.json"]').textContent);
+    const grid = document.getElementById('subjects-grid');
+
+    data.subjects.forEach(subject => {
+      subject.boards.forEach(board => {
+        const boardDiv = document.createElement('div');
+        boardDiv.className = 'board-card';
+
+        const boardTitle = document.createElement('h3');
+        boardTitle.textContent = `${subject.name} – ${board.board}`;
+        if (board.topics && board.topics.length > 0) {
+          boardTitle.textContent += ` (${board.topics.length} topics)`;
+        }
+
+        const topicList = document.createElement('ul');
+        if (board.topics && board.topics.length > 0) {
+          board.topics.slice(0, 3).forEach(topic => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = `#${topic.title.toLowerCase().replace(/\s+/g, '-')}`;
+            a.textContent = topic.title;
+            li.appendChild(a);
+            topicList.appendChild(li);
+          });
+          if (board.topics.length > 3) {
+            const more = document.createElement('li');
+            more.textContent = `+${board.topics.length - 3} more`;
+            topicList.appendChild(more);
+          }
+        } else {
+          const li = document.createElement('li');
+          li.textContent = 'No topics loaded yet';
+          topicList.appendChild(li);
+        }
+
+        boardDiv.appendChild(boardTitle);
+        boardDiv.appendChild(topicList);
+        grid.appendChild(boardDiv);
+      });
+    });
+  </script>
 </body>
 </html>
