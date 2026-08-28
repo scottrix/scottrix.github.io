@@ -41,42 +41,21 @@
       .then(data => {
         const grid = document.getElementById('subjects-grid');
         data.subjects.forEach(subject => {
-          subject.boards.forEach(board => {
-            const boardDiv = document.createElement('div');
-            boardDiv.className = 'board-card';
+  const subjectDiv = document.createElement('div');
+  subjectDiv.className = 'subject-card';
 
-            const boardTitle = document.createElement('h3');
-            boardTitle.textContent = `${subject.name} – ${board.board}`;
-            if (board.topics && board.topics.length > 0) {
-              boardTitle.textContent += ` (${board.topics.length} topics)`;
-            }
+  const a = document.createElement('a');
+  a.href = `${subject.name.toLowerCase().replace(/\\s+/g,'-')}.html`;
+  a.textContent = subject.name;
+  subjectDiv.appendChild(a);
 
-            const topicList = document.createElement('ul');
-            if (board.topics && board.topics.length > 0) {
-              board.topics.slice(0, 3).forEach(topic => {
-                const li = document.createElement('li');
-                const a = document.createElement('a');
-                a.href = topic.page;
-                a.textContent = topic.title;
-                li.appendChild(a);
-                topicList.appendChild(li);
-              });
-              if (board.topics.length > 3) {
-                const more = document.createElement('li');
-                more.textContent = `+${board.topics.length - 3} more`;
-                topicList.appendChild(more);
-              }
-            } else {
-              const li = document.createElement('li');
-              li.textContent = 'No topics loaded yet';
-              topicList.appendChild(li);
-            }
+  const topicCount = document.createElement('p');
+  const total = subject.boards.reduce((sum, board) => sum + (board.topics? board.topics.length : 0), 0);
+  topicCount.textContent = `${total} topics`;
+  subjectDiv.appendChild(topicCount);
 
-            boardDiv.appendChild(boardTitle);
-            boardDiv.appendChild(topicList);
-            grid.appendChild(boardDiv);
-          });
-        });
+  grid.appendChild(subjectDiv);
+});
       })
       .catch(err => console.error('Failed to load subjects:', err));
   </script>
