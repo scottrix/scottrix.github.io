@@ -122,3 +122,7 @@ body {
 .hero h1, .hero .subtitle, .site-section h2 {
   text-align: center;
 }
+
+#about p {
+  text-align: center;
+}
