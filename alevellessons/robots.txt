@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://scottrix.github.io/gcserevise/sitemap.xml

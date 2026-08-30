@@ -1,7 +1,7 @@
 """Generate A-Level revision and lesson content for scottrix.github.io."""
 import json, os, html
 
-ROOT = '/home/scott/src/scottrix.github.io'
+ROOT = '/home/scott/src'
 BOARDS = ["AQA", "Edexcel", "OCR", "WJEC", "CCEA"]
 
 # Each subject: name + topics. Each topic: title, objectives[], key[], example,
@@ -300,6 +300,105 @@ SUBJECTS = [
 def slug(t):
     return t.lower().replace(" ", "-").replace("/", "-")
 
+def title_from_html(path):
+    """Extract the <title> and strip the trailing site suffix for display."""
+    try:
+        with open(path, encoding='utf-8') as f:
+            head = f.read(2000)
+        import re
+        m = re.search(r'<title>(.*?)</title>', head, re.IGNORECASE | re.DOTALL)
+        if not m:
+            return None
+        t = m.group(1).strip()
+        # strip " - A-Level <Subject> (Revision|Lessons) Notes"
+        t = re.sub(r'\s*-\s*A-Level\s+.*$', '', t)
+        t = re.sub(r'\s*[-–]\s*(Revision|Lessons)?\s*Notes?\s*$', '', t).strip()
+        return t
+    except OSError:
+        return None
+
+def flat_general_board(base, subject_name):
+    """Scan topics/{slug}/ for orphaned rich flat topic .html files (not board
+    subdirs) and return them as a 'General' board entry."""
+    tdir = os.path.join(base, "topics", slug(subject_name))
+    entries = []
+    if not os.path.isdir(tdir):
+        return None
+    for fn in sorted(os.listdir(tdir)):
+        p = os.path.join(tdir, fn)
+        if not (fn.endswith('.html') and os.path.isfile(p)):
+            continue
+        display = title_from_html(p)
+        if not display:
+            display = fn[:-5].replace('-', ' ').title()
+        entries.append({
+            "title": display,
+            "boardNote": f"A-Level {subject_name} revision notes.",
+            "learningObjectives": [],
+            "keyPoints": [],
+            "exampleQuestion": "",
+            "modelAnswer": "",
+            "practiceQuestions": [],
+            "page": f"topics/{slug(subject_name)}/{fn}",
+        })
+    if not entries:
+        return None
+    return {"board": "General", "topics": entries}
+
+
+# Subject -> category (drives the home-page tabs). Matches regenerate_all.py.
+CATEGORIES = {
+  "Mathematics": "Core",
+  "Further Mathematics": "Core",
+  "English Literature": "Core",
+  "English Language": "Core",
+  "Biology": "Sciences",
+  "Chemistry": "Sciences",
+  "Physics": "Sciences",
+  "Computer Science": "Sciences",
+  "Economics": "Social Sciences",
+  "Psychology": "Social Sciences",
+  "Sociology": "Social Sciences",
+  "Business Studies": "Social Sciences",
+  "Politics": "Social Sciences",
+  "Law": "Social Sciences",
+  "History": "Humanities",
+  "Geography": "Humanities",
+  "Religious Studies": "Humanities",
+  "Philosophy": "Humanities",
+  "French": "Languages",
+  "Spanish": "Languages",
+  "German": "Languages",
+  "Latin": "Languages",
+  "Art and Design": "Creative & Physical",
+  "Music": "Creative & Physical",
+  "Drama and Theatre": "Creative & Physical",
+  "Media Studies": "Creative & Physical",
+  "Physical Education": "Creative & Physical",
+  "Accounting": "Other",
+}
+
+# Subjects with a single rich legacy topic file already in the repo
+# (topics/{slug}/{slug}.html) but not defined above with per-board content.
+LEGACY_TOPIC_FILES = {
+  "English Language": "language-diversity-sociolects-and-child-acquisition.html",
+  "Sociology": "sociological-theories-education-and-crime.html",
+  "Law": "the-english-legal-system-criminal-and-tort-law.html",
+  "Politics": "uk-and-us-government-constitutions-and-ideologies.html",
+  "Religious Studies": "philosophy-of-religion-ethical-theories-and-theology.html",
+  "Physical Education": "biomechanics-exercise-physiology-and-sports-psychology.html",
+  "Media Studies": "media-language-representation-industries-and-audiences.html",
+  "French": "la-societe-francaise-immigration-et-culture.html",
+  "Spanish": "sociedad-hispanica-tradiciones-y-movimientos-sociales.html",
+  "German": "gesellschaft-im-wandel-und-deutsche-geschichte.html",
+  "Latin": "advanced-latin-syntax-cicero-and-virgil.html",
+  "Art and Design": "critical-context-material-exploration-and-creative-synthesis.html",
+  "Music": "western-classical-harmony-sonata-form-and-score-analysis.html",
+  "Drama and Theatre": "theatre-practitioners-devising-and-textual-interpretation.html",
+  "Accounting": "financial-statements-ratio-analysis-and-costing.html",
+  "Philosophy": "epistemology-moral-philosophy-and-metaphysics-of-mind.html",
+}
+
 # Per-board notes where specs genuinely differ; generic otherwise.
 BOARD_NOTES = {
   "Mathematics": {
@@ -381,13 +480,14 @@ def build():
         base = os.path.join(ROOT, site)
         os.makedirs(base, exist_ok=True)
         output = {"subjects": []}
+        seen = set()
         for subject in SUBJECTS:
             subj_entry = {"name": subject["name"], "boards": []}
             notes = BOARD_NOTES.get(subject["name"], DEFAULT_NOTE)
             for board in BOARDS:
                 board_entry = {"board": board, "topics": []}
                 note = notes.get(board, DEFAULT_NOTE[board])
-                tdir = os.path.join(base, slug(subject["name"]), slug(board))
+                tdir = os.path.join(base, "topics", slug(subject["name"]), slug(board))
                 os.makedirs(tdir, exist_ok=True)
                 for topic in subject["topics"]:
                     tslug = slug(topic["title"])
@@ -399,14 +499,65 @@ def build():
                         "exampleQuestion": topic["example"],
                         "modelAnswer": topic["answer"],
                         "practiceQuestions": topic["practice"],
-                        "page": f"{slug(subject['name'])}/{slug(board)}/{tslug}.html",
+                        "page": f"topics/{slug(subject['name'])}/{slug(board)}/{tslug}.html",
                     }
                     board_entry["topics"].append(jtopic)
                     content = (lesson_page if mode == "Lessons" else revise_page)(subject, board, topic, note)
                     with open(os.path.join(tdir, f"{tslug}.html"), "w") as f:
                         f.write(content)
                 subj_entry["boards"].append(board_entry)
+            # Wire in any rich legacy flat topic files sitting in the subject dir.
+            gb = flat_general_board(base, subject["name"])
+            if gb:
+                subj_entry["boards"].append(gb)
+            subj_entry["id"] = slug(subject["name"])
+            subj_entry["category"] = CATEGORIES.get(subject["name"], "Core")
             output["subjects"].append(subj_entry)
+            seen.add(subject["name"])
+
+        # Add the 16 legacy subjects that already have a rich flat topic file,
+        # so subjects.json covers all 28. Preserve existing topic files (do not
+        # overwrite them); only their subject.json entry is (re)built.
+        for name, top_file in LEGACY_TOPIC_FILES.items():
+            if name in seen:
+                continue
+            subj = slug(name)
+            path = os.path.join(base, "topics", subj, slug(top_file))
+            os.makedirs(os.path.dirname(path), exist_ok=True)
+            topics_dir = os.path.join(base, "topics", subj)
+            board_entry = {"board": "General", "topics": []}
+            if os.path.exists(path):
+                board_entry["topics"].append({
+                    "title": name,
+                    "boardNote": "A-Level {name} revision notes.".format(name=name),
+                    "learningObjectives": [],
+                    "keyPoints": [],
+                    "exampleQuestion": "",
+                    "modelAnswer": "",
+                    "practiceQuestions": [],
+                    "page": f"topics/{subj}/{slug(top_file)}",
+                })
+            subj_entry = {
+                "name": name,
+                "boards": [board_entry],
+                "id": subj,
+                "category": CATEGORIES.get(name, "Core"),
+            }
+            output["subjects"].append(subj_entry)
+            seen.add(name)
+
+        # Sort subjects by the index order used on the home page, so the JSON
+        # list matches the static grid ordering.
+        order = ["Mathematics", "Further Mathematics", "English Literature", "English Language",
+                 "Biology", "Chemistry", "Physics", "Computer Science",
+                 "Economics", "Psychology", "Sociology", "Business Studies", "Politics", "Law",
+                 "History", "Geography", "Religious Studies", "Philosophy",
+                 "French", "Spanish", "German", "Latin",
+                 "Art and Design", "Music", "Drama and Theatre", "Media Studies", "Physical Education",
+                 "Accounting"]
+        name_to_subj = {s["name"]: s for s in output["subjects"]}
+        output["subjects"] = [name_to_subj[n] for n in order if n in name_to_subj]
+
         with open(os.path.join(base, "subjects.json"), "w") as f:
             json.dump(output, f, indent=2, ensure_ascii=False)
         print(f"built {site}: {len(output['subjects'])} subjects")
