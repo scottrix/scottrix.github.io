@@ -590,51 +590,310 @@ REDIRECT_TEMPLATE = """<!DOCTYPE html>
 """
 
 
+# Subject -> Amazon affiliate cards shown in the right-hand ad sidebar and the
+# end-of-page CTA. Keyed by subject id; subjects not listed fall back to a
+# generic set. Fastmail / Dynadot / Zen partner cards are always shown too.
+AFFILIATES = {
+  "mathematics": [
+    ("Scientific Calculators", "scientific+calculator+A-Level", "Essential for A-Level Maths exams"),
+    ("Graph Paper Pads", "graph+paper+a4+pad", "A4 squared paper for maths"),
+    ("Maths Revision Guides", "A-Level+Maths+revision+guides", "CGP and other revision guides"),
+  ],
+  "further-mathematics": [
+    ("Further Maths Guides", "A-Level+Further+Maths+revision", "Core Pure and option guides"),
+    ("Graphic Calculators", "graphic+calculator+student", "CAS and graphing calculators"),
+    ("Maths Revision Guides", "A-Level+Maths+revision+guides", "CGP and other revision guides"),
+  ],
+  "biology": [
+    ("Biology Revision Guides", "A-Level+Biology+revision+guides", "CGP, Oxford, and more"),
+    ("Microscope Slides", "microscope+slides+prepared", "Prepared slides for practicals"),
+    ("Biology Field Guides", "A-Level+biology+fieldwork+guide", "Required practical support"),
+  ],
+  "chemistry": [
+    ("Chemistry Revision Guides", "A-Level+Chemistry+revision+guides", "CGP, Oxford, and more"),
+    ("Molecular Model Kits", "molecular+model+kit+organic", "Visualise chemical structures"),
+    ("Periodic Table Posters", "periodic+table+poster+large", "Wall reference for chemistry"),
+  ],
+  "physics": [
+    ("Physics Revision Guides", "A-Level+Physics+revision+guides", "CGP, Oxford, and more"),
+    ("Data Loggers", "data+logger+physics+education", "For required practicals"),
+    ("Multimeters", "digital+multimeter+student", "Essential for electricity practicals"),
+  ],
+  "english-literature": [
+    ("Literature Study Guides", "A-Level+English+Literature+guides", "York Notes, CGP, and more"),
+    ("Set Text Collections", "A-Level+English+Literature+set+texts", "Complete play/novel editions"),
+    ("Annotation Sticky Notes", "sticky+notes+annotation", "For text analysis"),
+  ],
+  "english-language": [
+    ("English Language Guides", "A-Level+English+Language+revision", "CGP, York Notes, and more"),
+    ("Set Text Editions", "A-Level+English+set+texts", "Annotated editions for study"),
+    ("Highlighters & Pens", "highlighter+pens+study", "For text annotation"),
+  ],
+  "history": [
+    ("History Revision Guides", "A-Level+History+revision+guides", "Topic-specific guides"),
+    ("Timeline Wall Charts", "history+timeline+poster", "Visual reference for chronology"),
+    ("Source Analysis Workbooks", "A-Level+history+source+analysis", "Practice source questions"),
+  ],
+  "geography": [
+    ("Geography Revision Guides", "A-Level+Geography+revision+guides", "CGP, Oxford, and more"),
+    ("Atlas", "world+atlas+student", "Essential for map skills"),
+    ("Case Study Flashcards", "A-Level+geography+case+study+cards", "Key facts for case studies"),
+  ],
+  "economics": [
+    ("Economics Revision Guides", "A-Level+Economics+revision+guides", "Micro and macro"),
+    ("Economics Textbooks", "A-Level+Economics+textbook", "Core textbooks"),
+    ("Graph Paper", "economics+graph+paper+a4", "For diagrams"),
+  ],
+  "psychology": [
+    ("Psychology Revision Guides", "A-Level+Psychology+revision+guides", "Studies, theories, methods"),
+    ("Research Methods Workbooks", "psychology+research+methods+A-Level", "Experiments, ethics"),
+    ("Study Cards", "psychology+flashcards+A-Level", "Key studies and theories"),
+  ],
+  "business-studies": [
+    ("Business Revision Guides", "A-Level+Business+revision+guides", "CGP, Tutor2u, and more"),
+    ("Case Study Books", "A-Level+business+case+studies", "Real business examples"),
+    ("Financial Calculators", "financial+calculator+student", "For finance topics"),
+  ],
+  "computer-science": [
+    ("CS Revision Guides", "A-Level+Computer+Science+revision", "CGP, PG Online, and more"),
+    ("Python Books", "python+programming+A-Level", "Beginner to advanced Python"),
+    ("Raspberry Pi Kits", "raspberry+pi+starter+kit", "For programming projects"),
+  ],
+  "sociology": [
+    ("Sociology Revision Guides", "A-Level+Sociology+revision+guides", "Families, education, crime"),
+    ("Sociology Textbooks", "A-Level+Sociology+textbook", "Core concepts and theorists"),
+    ("Essay Planning Pads", "essay+planning+pad+a4", "Structure long answers"),
+  ],
+}
+
+DEFAULT_AFFILIATES = [
+  ("A-Level Revision Guides", "A-Level+revision+guides", "All subjects covered"),
+  ("Study Stationery", "study+stationery+student", "Pens, highlighters, flashcards"),
+  ("Revision Timetable", "revision+timetable+planner", "Plan your study schedule"),
+]
+
+
+def affiliate_cards(subject_id):
+    """Amazon affiliate + partner cards for the right-hand ad sidebar."""
+    affs = AFFILIATES.get(subject_id, DEFAULT_AFFILIATES)
+    cards = []
+    for title, search, desc in affs[:3]:
+        cards.append(
+            '<a href="https://www.amazon.co.uk/s?k={}&tag=scottrix-21" class="affiliate-card" target="_blank" rel="nofollow noopener">\n'
+            '<div class="affiliate-card-title">{}</div>\n'
+            '<div class="affiliate-card-desc">{}</div>\n'
+            '<div class="affiliate-card-store"><img src="../../amazon-smile.svg" alt="Amazon"> amazon.co.uk</div>\n'
+            '</a>'.format(search, title, desc)
+        )
+    cards += [
+        '<a href="https://join.fastmail.com/0d63b2d52105" class="affiliate-card" target="_blank" rel="nofollow noopener">'
+        '<div class="affiliate-card-title">Fastmail — Private Email</div>'
+        '<div class="affiliate-card-desc">Privacy-first email with no ads and no tracking</div>'
+        '<div class="affiliate-card-store">fastmail.com</div></a>',
+        '<a href="https://www.dynadot.com/?ref=scottrix" class="affiliate-card" target="_blank" rel="nofollow noopener">'
+        '<div class="affiliate-card-title">Dynadot — Domain Registration →</div>'
+        '<div class="affiliate-card-desc">Register or transfer domains with free SSL and affordable pricing</div>'
+        '<div class="affiliate-card-store">dynadot.com</div></a>',
+        '<a href="https://zen.mention-me.com/m/ol/yv3qsjix-scott-harrison" class="affiliate-card" target="_blank" rel="nofollow noopener">'
+        '<div class="affiliate-card-title">Zen Internet — UK Broadband →</div>'
+        '<div class="affiliate-card-desc">Award-winning UK broadband with no data caps and great customer service</div>'
+        '<div class="affiliate-card-store">zen.co.uk</div></a>',
+    ]
+    return "\n".join(cards)
+
+
 def topic_page(subject_name, topic, site, mode, board_diffs):
-    """Build one collapsed, board-agnostic topic page."""
+    """Build one collapsed, board-agnostic topic page in the full site layout
+    (header, breadcrumb, ad banners, sectioned content, ad-right sidebar,
+    footer) matching the gcserevise topic-page format."""
+    esc = html.escape
+    title = topic["title"]
+    sslug = slug(subject_name)
+    tslug = slug(title)
+    subject_id = sslug
+    domain = f"https://scottrix.github.io/{site}"
+    page_url = f"{domain}/topics/{sslug}/{tslug}.html"
+    subject_label = f"{subject_name}"
+    link_root = "../../"
+
+    # Board differences
     diffs = board_diffs.get(subject_name, {})
     diffs_html = ""
     if diffs:
         rows = "".join(
-            f'<div class="board-diff"><strong>{html.escape(b)}</strong> {html.escape(n)}</div>'
+            f'<div class="key-point"><strong>{esc(b)}:</strong> {esc(n)}</div>'
             for b, n in diffs.items()
         )
-        diffs_html = f"""<h2>Board Differences</h2>
-<p class="muted">Board specifications differ in assessment structure and emphasis. The core content below is shared across boards; these are the genuine differences by board:</p>
-{rows}"""
-    objectives = "".join(f'<li>{o}</li>' for o in topic["objectives"])
-    keypts = "".join(f'<li>{k}</li>' for k in topic["key"])
-    practice = "".join(f'<li>{p}</li>' for p in topic["practice"])
+        diffs_html = f"""<section class="section">
+<h2>🔀 Board Differences</h2>
+<p>Board specifications differ in assessment structure and emphasis. The core content below is shared across boards; these are the genuine differences by board:</p>
+{rows}
+</section>"""
+
+    # Content sections
+    objectives = "".join(f"<li>{esc(o)}</li>" for o in topic["objectives"])
+    keypts = "".join(
+        f'<div class="key-point"><strong>Key Fact:</strong> {esc(k)}</div>'
+        for k in topic["key"]
+    )
+    practice_items = "".join(f"<li>{esc(p)}</li>" for p in topic["practice"])
+
+    objectives_section = ""
+    if objectives:
+        objectives_section = f"""<section class="section">
+<h2>🎯 Learning Objectives</h2>
+<ul>{objectives}</ul>
+</section>"""
+
+    keypoints_section = f"""<section class="section">
+<h2>📌 Key Points</h2>
+{keypts}
+</section>"""
+
+    example_section = f"""<section class="section">
+<h2>💡 Worked Example</h2>
+<div class="example">
+<div class="example-title">Exam-Style Question</div>
+<p><strong>Question:</strong> {esc(topic['example'])}</p>
+<div style="margin-top: 1rem; padding-top: 0.75rem; border-top: 1px solid var(--border);">
+<p><strong>Model Answer:</strong></p>
+<p>{esc(topic['answer'])}</p>
+</div>
+</div>
+</section>"""
+
+    practice_section = ""
+    if practice_items:
+        practice_section = f"""<section class="section">
+<h2>❓ Practice Questions</h2>
+<div class="practice-questions">
+<div class="question">
+<p><strong>Questions:</strong></p>
+<ul>{practice_items}</ul>
+</div>
+</div>
+</section>"""
+
     if mode == "Lessons":
-        body = f"""<h2>Lesson Plan (50 minutes)</h2>
-<ol><li><strong>Starter (5 min):</strong> Recall prior knowledge of {topic['title'].lower()} with quick questions.</li>
+        lesson_section = f"""<section class="section">
+<h2>📚 Lesson Plan (50 minutes)</h2>
+<ol>
+<li><strong>Starter (5 min):</strong> Recall prior knowledge of {esc(title.lower())} with quick questions.</li>
 <li><strong>Teaching (15 min):</strong> Work through each of the learning objectives, explaining principles step by step.</li>
 <li><strong>Key points review (5 min):</strong> Revisit the key points together, confirming understanding.</li>
-<li><strong>Worked example (10 min):</strong> Model the example question: {topic['example']}. Solution: {topic['answer']}</li>
+<li><strong>Worked example (10 min):</strong> Model the example question: {esc(topic['example'])}. Solution: {esc(topic['answer'])}</li>
 <li><strong>Practice (10 min):</strong> Students attempt the practice questions independently; circulate and support.</li>
-<li><strong>Plenary (5 min):</strong> Review answers and address misconceptions.</li></ol>
-<h2>Homework</h2><ul>{practice}</ul>
-<h2>Assessment</h2><p>Check practice answers against the model answer; use the built-in practice questions as formative assessment.</p>"""
+<li><strong>Plenary (5 min):</strong> Review answers and address misconceptions.</li>
+</ol>
+</section>
+<section class="section">
+<h2>🏠 Homework</h2>
+<ul>{practice_items}</ul>
+</section>
+<section class="section">
+<h2>🧾 Assessment</h2>
+<p>Check practice answers against the model answer; use the built-in practice questions as formative assessment.</p>
+</section>"""
     else:
-        body = f"""<h2>Example Question</h2><p>{topic['example']}</p>
-<h2>Model Answer</h2><p>{topic['answer']}</p>
-<h2>Practice Questions</h2><ul>{practice}</ul>"""
+        lesson_section = ""
 
-    return f"""<!DOCTYPE html>
-<html lang="en"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{topic['title']} - {subject_name}</title><link rel="stylesheet" href="../../style.css">
-</head><body>
-<header class="site-header"><div class="header-inner">
-<a href="../../index.html" class="logo">📚 A-Level {mode}</a></div></header>
-<main><section class="site-section">
-<h1>{subject_name} — {topic['title']}</h1>
-<p><a href="../../index.html">Back to subjects</a></p>
+    meta_desc = (f"A-Level {esc(subject_name)} revision: {esc(title)}. "
+                 f"Learning objectives, key points, worked examples and practice questions across AQA, Edexcel, OCR, WJEC and CCEA.")
+    twitter_desc = f"{esc(title)} — A-Level {esc(subject_name)} revision notes."
+
+    page = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>/* gcanonical-redirect */(function(){{var p=location.pathname,q=location.search,h=location.hash,m=/^(.*)\\/index\\.html$/.exec(p);if(m){{location.replace(m[1]+"/"+q+h);return}}if(!p.endsWith("/")&&!/\\.[a-z0-9]{{1,10}}$/i.test(p)){{location.replace(p+".html"+q+h)}}}})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{esc(title)} - A-Level {esc(subject_name)} {mode} Notes</title>
+<meta name="description" content="{meta_desc}">
+<meta name="keywords" content="A-Level {esc(subject_name)}, {esc(title)}, revision notes, past papers, AQA, Edexcel, OCR, WJEC, CCEA">
+<meta property="og:title" content="{esc(title)} - A-Level {esc(subject_name)}">
+<meta property="og:description" content="{meta_desc}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="{page_url}">
+<link rel="canonical" href="{page_url}">
+<meta property="og:site_name" content="A-Level {mode}">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{esc(title)}">
+<meta name="twitter:description" content="{twitter_desc}">
+<link rel="stylesheet" href="{link_root}style.css">
+</head>
+<body>
+<header class="site-header">
+<div class="header-content">
+<a href="{link_root}index.html" class="logo">📚 A-Level {mode}</a>
+<nav class="nav">
+<a href="{link_root}index.html#subjects">Subjects</a>
+<a href="{link_root}{sslug}.html">{esc(subject_name)}</a>
+</nav>
+<button id="theme-toggle" class="theme-btn">🌙</button>
+</div>
+</header>
+
+<main class="topic-content">
+<div class="disclaimer-banner"><strong>A-Level {mode} Aid:</strong> This resource is designed to support your revision and may contain errors. If you find a discrepancy with your class teaching, your teacher is correct — please let us know at <a href="mailto:alevelrevise@scott.scottrix.co.uk">alevelrevise@scott.scottrix.co.uk</a>.</div>
+
+<nav class="breadcrumb">
+<a href="{link_root}index.html">Home</a> <span>›</span>
+<a href="{link_root}{sslug}.html">{esc(subject_name)}</a> <span>›</span>
+<span>{esc(title)}</span>
+</nav>
+
+<article class="topic-header">
+<h1>{esc(title)}</h1>
+<div class="topic-meta">
+<span class="badge foundation">Year 1 / AS</span><span class="badge higher">Year 2 / A-Level</span>
+<span class="badge">All Boards (AQA, Edexcel, OCR, WJEC, CCEA)</span>
+</div>
+<p class="topic-desc">{meta_desc}</p>
+</article>
+
+<a class="fastmail-topbar" data-banner="fastmail" href="https://join.fastmail.com/0d63b2d52105" target="_blank" rel="noopener"><img src="{link_root}FM Billboard 970x250.png" alt="Fastmail" loading="lazy"></a>
+<a class="fastmail-topbar" data-banner="dynadot" href="https://www.dynadot.com/?ref=scottrix" target="_blank" rel="nofollow noopener" hidden><img src="{link_root}dynadot-banner.jpg" alt="Dynadot — register a new domain, web hosting, SSL" loading="lazy" onerror="this.parentElement.style.display='none';document.querySelector('[data-banner=fastmail]').hidden=false"></a>
+<script>(function(){{var fm=document.querySelector('[data-banner=fastmail]');var dd=document.querySelector('[data-banner=dynadot]');if(Math.random()<0.5){{fm.hidden=true;dd.hidden=false}}}})();</script>
+
+{keypoints_section}
+{objectives_section}
 {diffs_html}
-<h2>Learning Objectives</h2><ul>{objectives}</ul>
-<h2>Key Points</h2><ul>{keypts}</ul>
-{body}
-</section></main></body></html>"""
+{example_section}
+{practice_section}
+{lesson_section}
+
+<nav class="topic-nav">
+<a href="{link_root}{sslug}.html">← Back to {esc(subject_name)} Overview</a>
+<a href="{link_root}index.html">All Subjects →</a>
+</nav>
+</main>
+<footer class="site-footer">
+<p>A-Level {mode} - Free revision notes for all subjects and exam boards</p>
+<p>Content for educational purposes only. Always cross-reference with official specifications.</p>
+<p>This site contains affiliate links. We may earn a commission if you purchase through these links.</p>
+<p>© 2025 | <a href="https://github.com/scottrix/{site}">GitHub</a> | <a href="{link_root}privacy.html">Privacy Policy</a> | <a href="mailto:alevelrevise@scott.scottrix.co.uk">Contact</a></p>
+</footer>
+<script>
+document.getElementById('theme-toggle').addEventListener('click', function() {{
+const root = document.documentElement;
+if (root.classList.contains('light-mode')) {{
+root.classList.remove('light-mode'); this.textContent = '🌙'; localStorage.setItem('{site}-theme', 'dark');
+}} else {{
+root.classList.add('light-mode'); this.textContent = '☀️'; localStorage.setItem('{site}-theme', 'light');
+}}
+}});
+if (localStorage.getItem('{site}-theme') === 'light') {{
+document.documentElement.classList.add('light-mode'); document.getElementById('theme-toggle').textContent = '☀️';
+}}
+</script>
+<aside class="ad-right">
+{affiliate_cards(subject_id)}
+</aside>
+<script src="{link_root}sidebar.js"></script>
+<script src="{link_root}affiliate-images.js"></script>
+</body></html>"""
+    return page
 
 
 def build():
