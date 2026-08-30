@@ -80,7 +80,16 @@ content = re.sub(tabs_pattern, tabs_replacement, content, flags=re.DOTALL)
 
 # Update hero stats
 content = re.sub(r'<span class="stat-number">12</span>', '<span class="stat-number">28</span>', content)
-content = re.sub(r'<span class="stat-number">300\+</span>', '<span class="stat-number">1000+</span>', content)
+
+# Collapsed model: count the actual unique topic pages (boards collapsed into
+# one page per topic), so the hero stat reflects real page counts.
+total_topics = sum(len(s.get('topics', [])) for s in subjects)
+# Anchor on the "Topics" label so this is robust regardless of the current value.
+content = re.sub(
+    r'(<span class="stat-number">)[^<]*(</span>\s*<span class="stat-label">Topics</span>)',
+    r'\g<1>%d\2' % total_topics,
+    content,
+)
 
 # Write updated index for both sites
 for site in ['alevelrevise', 'alevellessons']:

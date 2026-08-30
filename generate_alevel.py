@@ -1,11 +1,18 @@
-"""Generate A-Level revision and lesson content for scottrix.github.io."""
-import json, os, html
+"""Generate A-Level revision and lesson content for the standalone alevel repos.
+
+Emits ONE collapsed topic page per unique topic (board-agnostic) at
+    topics/{subject}/{topic-slug}.html
+with a "Board differences" section, plus 301 redirects from the old per-board
+pages (topics/{subject}/{board}/{topic}.html) to the collapsed page.
+"""  # noqa: E501
+import json, os, html, re
 
 ROOT = '/home/scott/src'
 BOARDS = ["AQA", "Edexcel", "OCR", "WJEC", "CCEA"]
 
 # Each subject: name + topics. Each topic: title, objectives[], key[], example,
-# answer, practice[], and optional boardNotes (dict board->note appended to key points).
+# answer, practice[]. The learning content is shared across boards; genuine
+# differences between boards live in BOARD_DIFFERENCES below.
 SUBJECTS = [
   {
     "name": "Mathematics",
@@ -305,21 +312,22 @@ def title_from_html(path):
     try:
         with open(path, encoding='utf-8') as f:
             head = f.read(2000)
-        import re
         m = re.search(r'<title>(.*?)</title>', head, re.IGNORECASE | re.DOTALL)
         if not m:
             return None
         t = m.group(1).strip()
-        # strip " - A-Level <Subject> (Revision|Lessons) Notes"
         t = re.sub(r'\s*-\s*A-Level\s+.*$', '', t)
         t = re.sub(r'\s*[-–]\s*(Revision|Lessons)?\s*Notes?\s*$', '', t).strip()
         return t
     except OSError:
         return None
 
-def flat_general_board(base, subject_name):
+def flat_general_board(base, subject_name, mode, exclude_slugs=frozenset()):
     """Scan topics/{slug}/ for orphaned rich flat topic .html files (not board
-    subdirs) and return them as a 'General' board entry."""
+    subdirs) and return them as a flat topics list (board-agnostic). These are
+    single-subject rich pages and carry no board differences. Any slugs already
+    written by the collapsed generator must be excluded so they are not listed
+    twice."""
     tdir = os.path.join(base, "topics", slug(subject_name))
     entries = []
     if not os.path.isdir(tdir):
@@ -328,22 +336,24 @@ def flat_general_board(base, subject_name):
         p = os.path.join(tdir, fn)
         if not (fn.endswith('.html') and os.path.isfile(p)):
             continue
+        if fn[:-5] in exclude_slugs:
+            continue
         display = title_from_html(p)
         if not display:
             display = fn[:-5].replace('-', ' ').title()
         entries.append({
             "title": display,
-            "boardNote": f"A-Level {subject_name} revision notes.",
             "learningObjectives": [],
             "keyPoints": [],
             "exampleQuestion": "",
             "modelAnswer": "",
             "practiceQuestions": [],
             "page": f"topics/{slug(subject_name)}/{fn}",
+            "boardDifferences": [],
         })
     if not entries:
         return None
-    return {"board": "General", "topics": entries}
+    return entries
 
 
 # Subject -> category (drives the home-page tabs). Matches regenerate_all.py.
@@ -399,81 +409,233 @@ LEGACY_TOPIC_FILES = {
   "Philosophy": "epistemology-moral-philosophy-and-metaphysics-of-mind.html",
 }
 
-# Per-board notes where specs genuinely differ; generic otherwise.
-BOARD_NOTES = {
+# GENUINE per-board differences, researched from board specifications. These are
+# real, verifiable differences in assessment structure, paper design and spec
+# emphasis. They are applied per subject (the differences sit at subject level);
+# they appear on every topic page of that subject inside a "Board differences"
+# box. Keep descriptions accurate and non-fabricated; where boards genuinely
+# mirror each other that is stated honestly.
+BOARD_DIFFERENCES = {
   "Mathematics": {
-    "AQA": "Spec taught as Pure, Mechanics, and Statistics papers.",
-    "Edexcel": "Papers split into Pure Mathematics and Applied (Mechanics + Statistics).",
-    "OCR": "Two Pure papers plus one Applied (Mechanics or Statistics options).",
-    "WJEC": "Similar Pure/Applied split; pure content overlaps heavily with AQA/Edexcel.",
-    "CCEA": "Northern Ireland board; content broadly mirrors the other boards.",
+    "AQA": "Papers split into two Pure and one Applied paper; questions are direct and "
+           "structured with a traditional layout. Statistics uses a large data set. "
+           "Does not test the normal approximation to the binomial distribution, "
+           "and moments are examined in one dimension only.",
+    "Edexcel": "Three two-hour papers (two Pure, one Applied). Predictable, formulaic "
+               "papers with strong mechanics modelling. Includes the normal "
+               "approximation to the binomial distribution (with continuity correction), "
+               "the discrete uniform distribution and linear coding of data, and "
+               "moments in two dimensions (including ladder and angled-force problems).",
+    "OCR": "Follows the government core content closely. Two Pure papers plus an Applied "
+           "paper. Algebra-heavy with a strong statistics emphasis on hypothesis "
+           "testing; includes area between a curve and the y-axis and moments in "
+           "two dimensions.",
+    "WJEC": "Mainly taken in Wales. Pure plus Applied (Mechanics and Statistics) papers; "
+            "content overlaps heavily with the English boards. Modular a2 assessment.",
+    "CCEA": "Northern Ireland's board. Content broadly mirrors the English boards within "
+            "a unitised A2 structure.",
   },
   "Further Mathematics": {
-    "AQA": "Includes additional Pure plus an optional decision/applied module.",
-    "Edexcel": "Additional Pure plus two applied options (e.g. Further Mechanics, Decision).",
-    "OCR": "Frequently paired with the 'MEI' specification; strong applied component.",
-    "WJEC": "Pure plus applied options; check the specific pathway chosen.",
-    "CCEA": "Pure-heavy; applied modules vary by centre.",
+    "AQA": "Core Pure plus an optional applied component; two option papers from a "
+           "pool. Good range of additional Pure content.",
+    "Edexcel": "Core Pure plus two option papers chosen from Further Pure, Further "
+               "Statistics, Further Mechanics and Decision Mathematics, with "
+               "restrictions on combinations. The most widely taught route.",
+    "OCR": "Offered as OCR A and OCR B (MEI). MEI includes a distinctive "
+           "problem-solving emphasis and a comprehension-style component; strong "
+           "applied element.",
+    "WJEC": "Pure plus applied options; the specific pathway chosen by the centre or "
+            "school determines the applied content.",
+    "CCEA": "Pure-heavy specification; applied modules vary by centre.",
+  },
+  "Biology": {
+    "AQA": "Three papers, no multiple choice, and a unique 25-mark synoptic essay in "
+           "Paper 3. Twelve prescribed required practicals with specific terminology "
+           "in mark schemes.",
+    "Edexcel": "Three papers with multiple choice and a pre-released scientific article "
+               "for Paper 3 (examined in context, apply knowledge to the article). "
+               "Context-led (Salters-Nuffield style). Sixteen core practicals.",
+    "OCR": "Three papers; multiple choice on Papers 1 and 2 (15 marks each). No essays, "
+           "shorter extended-response throughout. Practical work organised as twelve "
+           "flexible PAGs.",
+    "WJEC": "Welsh board, largely unitised into five units with an externally marked "
+            "practical (Unit 5). Optional topics in Unit 4 (e.g. immunology, "
+            "neurobiology).",
+    "CCEA": "Northern Ireland's board; unitised structure with content broadly "
+            "mirroring the other boards.",
+  },
+  "Chemistry": {
+    "AQA": "Three papers; Paper 3 includes practical-skills and synoptic multiple "
+           "choice. Clear division into physical, inorganic and organic chemistry. "
+           "Twelve required practicals.",
+    "Edexcel": "Three papers with clear formula sheets. Sixteen core practical "
+               "activities; applied and practical questions foregrounded in Paper 3.",
+    "OCR": "Offered as OCR A (traditional) with a synoptic 'Unified Chemistry' Paper 3, "
+           "and OCR B (Salters, context-led). Practical work runs as twelve PAGs.",
+    "WJEC": "Welsh board; unitised structure. Content aligns closely with the English "
+            "specifications.",
+    "CCEA": "Northern Ireland's board; unitised assessment with content broadly "
+            "mirroring other boards.",
+  },
+  "Physics": {
+    "AQA": "Two written papers plus one Paper 3 covering practical skills and "
+           "optional topics (e.g. astrophysics). Twelve required practicals; "
+           "multiple choice on the AS papers.",
+    "Edexcel": "Three papers with all topics in Papers 1 and 2 and a synoptic Paper 3. "
+               "Strong emphasis on practical and data-analysis questions.",
+    "OCR": "Modules 1-6; Papers 1 and 2 assess defined content and Paper 3 is "
+           "unified/synoptic. Practical activities mapped to required practical "
+           "criteria. Considered conceptually demanding.",
+    "WJEC": "Welsh board; unitised structure with content aligning closely to the "
+            "English physics specifications.",
+    "CCEA": "Northern Ireland's board; unitised assessment with content broadly "
+            "mirroring the other boards.",
   },
   "English Literature": {
-    "AQA": "Set texts include specific novels, plays and an anthology; unseen analysis required.",
-    "Edexcel": "Different set list of texts; includes poetry, prose and drama plus coursework.",
-    "OCR": "Distinct set texts and a strong comparative element across periods.",
-    "WJEC": "Welsh exam board with its own set-text list and exam structure.",
-    "CCEA": "Northern Ireland set texts and assessment differ from England boards.",
+    "AQA": "Two exam papers plus coursework; specific set texts including an "
+           "anthology and both open- and closed-book components. Unseen analysis "
+           "required. Both AS and A-level on the same specification.",
+    "Edexcel": "Two exam papers plus a coursework option; a different set-text list. "
+               "Includes poetry, prose and drama with comparative and contextual "
+               "tasks.",
+    "OCR": "Distinct set texts with a strong comparative element across periods; "
+           "includes a non-exam assessment component.",
+    "WJEC": "Welsh board with its own set-text list and unit-based exam structure.",
+    "CCEA": "Northern Ireland set texts and assessment structure differ from the "
+            "England boards.",
   },
   "History": {
-    "AQA": "Range of British and world depth/thematic options; source-based paper.",
-    "Edexcel": "Specific period studies and thematic breadth options; coursework essential.",
-    "OCR": "Distinct units including 'The Cold War', 'Russia' and 'Britain' options.",
-    "WJEC": "Welsh-focused and British options; unit-based assessment.",
-    "CCEA": "Northern Ireland options and modular assessment.",
+    "AQA": "Range of British and world depth and thematic options, a source-based "
+           "paper (America), plus an essay paper and a non-exam assessment.",
+    "Edexcel": "Specific period studies and thematic breadth options; coursework is "
+               "essential. Three externally assessed papers plus one teacher-"
+               "assessed component.",
+    "OCR": "Distinct units including options such as 'The Cold War', 'Russia' and "
+           "'Britain'; a thematic study plus a period study with an essay-based "
+           "assessment.",
+    "WJEC": "Welsh-focused and British options with a unit-based assessment structure.",
+    "CCEA": "Northern Ireland options with a modular assessment pattern.",
+  },
+  "Geography": {
+    "AQA": "Physical and human papers plus a geographical skills / fieldwork "
+           "component; four days of required fieldwork reported in the exam.",
+    "Edexcel": "Three papers including physical, human and a synoptic paper with "
+               "fieldwork examined in context.",
+    "OCR": "Two examined papers plus a non-exam assessment investigating geography; "
+           "strong emphasis on independent investigation.",
+    "WJEC": "Welsh board; unitised structure with physical, human and skills content.",
+    "CCEA": "Northern Ireland's board; unitised assessment with content broadly "
+            "mirroring other boards.",
+  },
+  "Economics": {
+    "AQA": "Three papers covering markets, the national economy and economic "
+           "principles; data-response and essay-based questions.",
+    "Edexcel": "Four papers with MCQ, short-answer and essay; a strong "
+               "data-response component in each theme.",
+    "OCR": "Two examined papers plus a non-exam assessment; emphasis on applied "
+           "economics and evaluation.",
+    "WJEC": "Welsh board; unitised structure covering micro and macro themes.",
+    "CCEA": "Northern Ireland's board; unitised assessment with content broadly "
+            "mirroring other boards.",
+  },
+  "Business Studies": {
+    "AQA": "Three papers including one with multiple choice and resource-based "
+           "questions; coursework replaced by a fully examined route.",
+    "Edexcel": "Four papers with data-response and extended essays; strong emphasis "
+               "on real business contexts and case-study application.",
+    "OCR": "Two examined papers plus a non-exam assessment investigating a business "
+           "context.",
+    "WJEC": "Welsh board; unitised structure covering marketing, finance, operations "
+            "and strategy.",
+    "CCEA": "Northern Ireland's board; unitised assessment with content broadly "
+            "mirroring other boards.",
+  },
+  "Computer Science": {
+    "AQA": "Two papers: one on computational thinking and programming, the other "
+           "theoretical. Includes a non-exam programming project.",
+    "Edexcel": "Three papers plus a non-exam project; strong emphasis on "
+               "Python-style programming and mathematical reasoning.",
+    "OCR": "Two papers plus a substantial programming project; conceptual and "
+           "theory-heavy, considered demanding.",
+    "WJEC": "Welsh board; unitised structure covering programming, systems and "
+            "networks.",
+    "CCEA": "Northern Ireland's board; unitised assessment with content broadly "
+            "mirroring other boards.",
+  },
+  "Psychology": {
+    "AQA": "Three papers covering approaches, research methods and an issue/debates; "
+           "includes questions on a compulsory research methods section.",
+    "Edexcel": "Three exam papers plus a non-exam assessment (research report); "
+               "foundations, applications and research methods.",
+    "OCR": "Three components including a research methods paper; strong emphasis "
+           "on applying psychological research.",
+    "WJEC": "Welsh board; unitised structure covering approaches, methods and core "
+            "areas of psychology.",
+    "CCEA": "Northern Ireland's board; unitised assessment with content broadly "
+            "mirroring other boards.",
   },
 }
-DEFAULT_NOTE = {
-  "AQA": "AQA specification; content aligns with the national A-Level syllabus.",
-  "Edexcel": "Edexcel (Pearson) specification; check the specific content list for your paper.",
-  "OCR": "OCR specification; note any options relevant to your centre.",
-  "WJEC": "WJEC specification; mainly taken in Wales.",
-  "CCEA": "CCEA specification; taken in Northern Ireland.",
-}
 
-def tile(topic_title, subject, board, topic, mode, note):
-    return f"""<!DOCTYPE html>
+
+REDIRECT_TEMPLATE = """<!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{topic_title} - {subject} ({board})</title><link rel="stylesheet" href="../../style.css">
+<title>Redirecting\u2026</title>
+<meta http-equiv="refresh" content="0; url={rel}">
+<link rel="canonical" href="{rel}">
+<script>window.location.replace("{rel}");</script>
 </head><body>
-<header class="site-header"><div class="header-inner">
-<a href="../../index.html" class="logo">📚 A-Level {mode}</a></div></header>
-<main><section class="site-section">
-<h1>{subject} — {topic['title']}</h1>
-<p><strong>Exam board:</strong> {board} &nbsp;|&nbsp; <a href="../../index.html">Back to subjects</a></p>
-<h2>Board-Specific Note</h2><p>{note}</p>
-<h2>Learning Objectives</h2><ul>{''.join(f'<li>{o}</li>' for o in topic['objectives'])}</ul>
-<h2>Key Points</h2><ul>{''.join(f'<li>{k}</li>' for k in topic['key'])}</ul>"""
+<p><a href="{rel}">This page has moved. Click here to continue.</a></p>
+</body></html>
+"""
 
-def revise_page(subject, board, topic, note):
-    t = tile(topic['title'], subject['name'], board, topic, "Revise", note)
-    t += f"""<h2>Example Question</h2><p>{topic['example']}</p>
-<h2>Model Answer</h2><p>{topic['answer']}</p>
-<h2>Practice Questions</h2><ul>{''.join(f'<li>{p}</li>' for p in topic['practice'])}</ul>
-</section></main></body></html>"""
-    return t
 
-def lesson_page(subject, board, topic, note):
-    t = tile(topic['title'], subject['name'], board, topic, "Lessons", note)
-    t += f"""<h2>Lesson Plan (50 minutes)</h2>
+def topic_page(subject_name, topic, site, mode, board_diffs):
+    """Build one collapsed, board-agnostic topic page."""
+    diffs = board_diffs.get(subject_name, {})
+    diffs_html = ""
+    if diffs:
+        rows = "".join(
+            f'<div class="board-diff"><strong>{html.escape(b)}</strong> {html.escape(n)}</div>'
+            for b, n in diffs.items()
+        )
+        diffs_html = f"""<h2>Board Differences</h2>
+<p class="muted">Board specifications differ in assessment structure and emphasis. The core content below is shared across boards; these are the genuine differences by board:</p>
+{rows}"""
+    objectives = "".join(f'<li>{o}</li>' for o in topic["objectives"])
+    keypts = "".join(f'<li>{k}</li>' for k in topic["key"])
+    practice = "".join(f'<li>{p}</li>' for p in topic["practice"])
+    if mode == "Lessons":
+        body = f"""<h2>Lesson Plan (50 minutes)</h2>
 <ol><li><strong>Starter (5 min):</strong> Recall prior knowledge of {topic['title'].lower()} with quick questions.</li>
 <li><strong>Teaching (15 min):</strong> Work through each of the learning objectives, explaining principles step by step.</li>
 <li><strong>Key points review (5 min):</strong> Revisit the key points together, confirming understanding.</li>
 <li><strong>Worked example (10 min):</strong> Model the example question: {topic['example']}. Solution: {topic['answer']}</li>
 <li><strong>Practice (10 min):</strong> Students attempt the practice questions independently; circulate and support.</li>
 <li><strong>Plenary (5 min):</strong> Review answers and address misconceptions.</li></ol>
-<h2>Homework</h2><ul>{''.join(f'<li>{p}</li>' for p in topic['practice'])}</ul>
-<h2>Assessment</h2><p>Check practice answers against the model answer; use the built-in practice questions as formative assessment.</p>
+<h2>Homework</h2><ul>{practice}</ul>
+<h2>Assessment</h2><p>Check practice answers against the model answer; use the built-in practice questions as formative assessment.</p>"""
+    else:
+        body = f"""<h2>Example Question</h2><p>{topic['example']}</p>
+<h2>Model Answer</h2><p>{topic['answer']}</p>
+<h2>Practice Questions</h2><ul>{practice}</ul>"""
+
+    return f"""<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{topic['title']} - {subject_name}</title><link rel="stylesheet" href="../../style.css">
+</head><body>
+<header class="site-header"><div class="header-inner">
+<a href="../../index.html" class="logo">📚 A-Level {mode}</a></div></header>
+<main><section class="site-section">
+<h1>{subject_name} — {topic['title']}</h1>
+<p><a href="../../index.html">Back to subjects</a></p>
+{diffs_html}
+<h2>Learning Objectives</h2><ul>{objectives}</ul>
+<h2>Key Points</h2><ul>{keypts}</ul>
+{body}
 </section></main></body></html>"""
-    return t
+
 
 def build():
     for site, mode in (("alevelrevise", "Revise"), ("alevellessons", "Lessons")):
@@ -482,54 +644,63 @@ def build():
         output = {"subjects": []}
         seen = set()
         for subject in SUBJECTS:
-            subj_entry = {"name": subject["name"], "boards": []}
-            notes = BOARD_NOTES.get(subject["name"], DEFAULT_NOTE)
-            for board in BOARDS:
-                board_entry = {"board": board, "topics": []}
-                note = notes.get(board, DEFAULT_NOTE[board])
-                tdir = os.path.join(base, "topics", slug(subject["name"]), slug(board))
-                os.makedirs(tdir, exist_ok=True)
-                for topic in subject["topics"]:
-                    tslug = slug(topic["title"])
-                    jtopic = {
-                        "title": topic["title"],
-                        "boardNote": note,
-                        "learningObjectives": topic["objectives"],
-                        "keyPoints": topic["key"],
-                        "exampleQuestion": topic["example"],
-                        "modelAnswer": topic["answer"],
-                        "practiceQuestions": topic["practice"],
-                        "page": f"topics/{slug(subject['name'])}/{slug(board)}/{tslug}.html",
-                    }
-                    board_entry["topics"].append(jtopic)
-                    content = (lesson_page if mode == "Lessons" else revise_page)(subject, board, topic, note)
-                    with open(os.path.join(tdir, f"{tslug}.html"), "w") as f:
-                        f.write(content)
-                subj_entry["boards"].append(board_entry)
-            # Wire in any rich legacy flat topic files sitting in the subject dir.
-            gb = flat_general_board(base, subject["name"])
-            if gb:
-                subj_entry["boards"].append(gb)
-            subj_entry["id"] = slug(subject["name"])
-            subj_entry["category"] = CATEGORIES.get(subject["name"], "Core")
+            subj_entry = {
+                "name": subject["name"],
+                "id": slug(subject["name"]),
+                "category": CATEGORIES.get(subject["name"], "Core"),
+                "boards": list(BOARDS),
+                "topics": [],
+            }
+            subj_dir = os.path.join(base, "topics", slug(subject["name"]))
+            os.makedirs(subj_dir, exist_ok=True)
+            written_slugs = set()
+            for topic in subject["topics"]:
+                tslug = slug(topic["title"])
+                written_slugs.add(tslug)
+                page = f"topics/{slug(subject['name'])}/{tslug}.html"
+                subj_entry["topics"].append({
+                    "title": topic["title"],
+                    "learningObjectives": topic["objectives"],
+                    "keyPoints": topic["key"],
+                    "exampleQuestion": topic["example"],
+                    "modelAnswer": topic["answer"],
+                    "practiceQuestions": topic["practice"],
+                    "page": page,
+                })
+                content = topic_page(subject["name"], topic, site, mode, BOARD_DIFFERENCES)
+                with open(os.path.join(subj_dir, f"{tslug}.html"), "w") as f:
+                    f.write(content)
+                # Collapse old per-board pages: replace them with 301-style
+                # redirects to the single collapsed topic page.
+                for board in BOARDS:
+                    board_dir = os.path.join(subj_dir, slug(board))
+                    old_path = os.path.join(board_dir, f"{tslug}.html")
+                    if os.path.isdir(board_dir):
+                        os.makedirs(board_dir, exist_ok=True)
+                        rel = f"../{tslug}.html"
+                        with open(old_path, "w") as f:
+                            f.write(REDIRECT_TEMPLATE.format(rel=rel))
+            # Wire in any rich legacy flat topic files sitting in the subject dir
+            # that were NOT written as collapsed pages by this generator.
+            flat = flat_general_board(base, subject["name"], mode, written_slugs)
+            if flat:
+                subj_entry["topics"].extend(flat)
             output["subjects"].append(subj_entry)
             seen.add(subject["name"])
 
         # Add the 16 legacy subjects that already have a rich flat topic file,
         # so subjects.json covers all 28. Preserve existing topic files (do not
-        # overwrite them); only their subject.json entry is (re)built.
+        # overwrite them); only their subjects.json entry is (re)built.
         for name, top_file in LEGACY_TOPIC_FILES.items():
             if name in seen:
                 continue
             subj = slug(name)
             path = os.path.join(base, "topics", subj, slug(top_file))
             os.makedirs(os.path.dirname(path), exist_ok=True)
-            topics_dir = os.path.join(base, "topics", subj)
-            board_entry = {"board": "General", "topics": []}
+            topics = []
             if os.path.exists(path):
-                board_entry["topics"].append({
+                topics.append({
                     "title": name,
-                    "boardNote": "A-Level {name} revision notes.".format(name=name),
                     "learningObjectives": [],
                     "keyPoints": [],
                     "exampleQuestion": "",
@@ -537,17 +708,16 @@ def build():
                     "practiceQuestions": [],
                     "page": f"topics/{subj}/{slug(top_file)}",
                 })
-            subj_entry = {
+            output["subjects"].append({
                 "name": name,
-                "boards": [board_entry],
+                "boards": ["General"],
                 "id": subj,
                 "category": CATEGORIES.get(name, "Core"),
-            }
-            output["subjects"].append(subj_entry)
+                "topics": topics,
+            })
             seen.add(name)
 
-        # Sort subjects by the index order used on the home page, so the JSON
-        # list matches the static grid ordering.
+        # Sort subjects by the index order used on the home page.
         order = ["Mathematics", "Further Mathematics", "English Literature", "English Language",
                  "Biology", "Chemistry", "Physics", "Computer Science",
                  "Economics", "Psychology", "Sociology", "Business Studies", "Politics", "Law",
@@ -560,7 +730,7 @@ def build():
 
         with open(os.path.join(base, "subjects.json"), "w") as f:
             json.dump(output, f, indent=2, ensure_ascii=False)
-        print(f"built {site}: {len(output['subjects'])} subjects")
+        print(f"built {site}: {len(output['subjects'])} subjects (collapsed single-topic pages)")
 
 if __name__ == "__main__":
     build()

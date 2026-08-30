@@ -31,28 +31,15 @@ def build_landing(subject, site, site_display):
     domain = f'https://scottrix.github.io/{site}'
     canonical = f'{domain}/{subj_slug}.html'
 
-    # Collect topics. Deduplicate by (title) but keep board info for the badge.
-    topics = []
-    seen_titles = set()
-    for board in boards:
-        bname = board.get('board', 'General')
-        for topic in board.get('topics', []):
-            title = topic['title']
-            page = topic['page']
-            key = (title, page)
-            topics.append({'title': title, 'page': page, 'board': bname})
-            seen_titles.add(title)
-
+    # Collapsed model: each subject has a flat list of topics (one page each).
+    topics = [{'title': t['title'], 'page': t['page']} for t in subject.get('topics', [])]
     total_topics = len(topics)
     unique_titles = sorted({t['title'] for t in topics})
 
-    # Sidebar: unique topics (dedup titles so a 5-board subject lists each topic once).
-    sidebar_by_title = {}
-    for t in topics:
-        sidebar_by_title.setdefault(t['title'], t)
+    # Sidebar: one entry per topic.
     sidebar_items = ''.join(
-        f'<li><a href="{esc(t["page"])}">{esc(title)}</a></li>'
-        for title, t in sidebar_by_title.items()
+        f'<li><a href="{esc(t["page"])}">{esc(t["title"])}</a></li>'
+        for t in topics
     )
 
     # Group by first word (strand) for the topics-grid sections.
