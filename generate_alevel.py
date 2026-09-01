@@ -716,19 +716,8 @@ def topic_page(subject_name, topic, site, mode, board_diffs):
     subject_label = f"{subject_name}"
     link_root = "../../"
 
-    # Board differences
-    diffs = board_diffs.get(subject_name, {})
+    # Board differences removed from topic pages — they live on subject landing pages
     diffs_html = ""
-    if diffs:
-        rows = "".join(
-            f'<div class="key-point"><strong>{esc(b)}:</strong> {esc(n)}</div>'
-            for b, n in diffs.items()
-        )
-        diffs_html = f"""<section class="section">
-<h2>🔀 Board Differences</h2>
-<p>Board specifications differ in assessment structure and emphasis. The core content below is shared across boards; these are the genuine differences by board:</p>
-{rows}
-</section>"""
 
     # Content sections
     objectives = "".join(f"<li>{esc(o)}</li>" for o in topic["objectives"])

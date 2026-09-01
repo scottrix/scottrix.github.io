@@ -9,7 +9,11 @@ per-board generated subjects and the single-topic legacy subjects.
 import html as html_mod
 import json
 import re
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent))
+from generate_alevel import BOARD_DIFFERENCES
 
 BASE = Path('/home/scott/src')
 
@@ -64,6 +68,20 @@ def build_landing(subject, site, site_display):
     sections_html = '\n'.join(sections)
     topic_desc = (f'Free A-Level {name} revision notes. {total_topics} topics '
                   f'across AQA, Edexcel, OCR, WJEC, and CCEA specifications.')
+
+    # Board differences section for subject landing page
+    diffs = BOARD_DIFFERENCES.get(name, {})
+    diffs_html = ""
+    if diffs:
+        rows = "".join(
+            f'<div class="key-point"><strong>{esc(b)}:</strong> {esc(n)}</div>'
+            for b, n in diffs.items()
+        )
+        diffs_html = f"""<section class="section">
+<h2>🔀 Board Differences</h2>
+<p>Board specifications differ in assessment structure and emphasis. The core content is shared across boards; these are the genuine differences by board:</p>
+{rows}
+</section>"""
 
     title = f'A-Level {name} - Free {site_display} Notes'
 
@@ -126,6 +144,8 @@ def build_landing(subject, site, site_display):
 </div>
 <p class="topic-desc">{esc(topic_desc)}</p>
 </article>
+
+{diffs_html}
 
 <section class="section">
 <h2>📊 Course Overview</h2>
