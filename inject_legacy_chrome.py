@@ -223,10 +223,7 @@ document.documentElement.classList.add('light-mode'); document.getElementById('t
 <script src="../../affiliate-images.js"></script>'''
 
 
-def inject_chrome(html, subject_id):
-    # Already has full chrome?
-    if 'class="ad-right"' in html:
-        return html, False
+def inject_chrome(html, subject_id, subject_name):
 
     # 1. Insert banner after </article> (topic-header)
     # Legacy pages have <article class="topic-header">... close with </article>
@@ -235,14 +232,52 @@ def inject_chrome(html, subject_id):
         pos = m.end()
         html = html[:pos] + '\n' + BANNER_HTML + '\n' + html[pos:]
 
-    # 2. Insert ad-right sidebar before </main>
+    # 2. Inject resource sections before </main>
+    # Add Video Resources, Past Papers, and External Links sections
+    resource_sections = ""
+    
+    # Video Resources
+    video_section = f'''<section class="section">
+<h2>🎬 Video Resources</h2>
+<ul><li><a href="https://www.youtube.com/results?search_query={subject_name.replace(' ', '+')}+A-Level" target="_blank" rel="noopener">{subject_name} - Overview</a> -- YouTube Search</li><li><a href="https://www.youtube.com/results?search_query={subject_name.replace(' ', '+')}+exam+questions" target="_blank" rel="noopener">{subject_name} - Exam Questions</a> -- YouTube Search</li></ul>
+</section>'''
+    resource_sections += video_section
+    
+    # Past Papers
+    pastpapers_section = f'''<section class="section">
+<h2>📄 Past Papers & Exam Resources</h2>
+<ul><li><a href="https://www.aqa.org.uk/find-past-papers-and-mark-schemes" target="_blank" rel="noopener">AQA A-Level - Past Papers</a> -- AQA</li><li><a href="https://qualifications.pearson.com/en/support/support-topics/exams/past-papers.html" target="_blank" rel="noopener">Edexcel A-Level - Past Papers</a> -- Edexcel</li><li><a href="https://www.ocr.org.uk/qualifications/past-paper-finder/" target="_blank" rel="noopener">OCR A-Level - Past Papers</a> -- OCR</li></ul>
+</section>'''
+    resource_sections += pastpapers_section
+    
+    # External Links
+    external_section = f'''<section class="section">
+<h2>🔗 Further Reading & Resources</h2>
+<ul><li><a href="https://www.physicsandmathstutor.com/" target="_blank" rel="noopener">Physics & Maths Tutor</a> -- Free notes, worksheets, and past paper questions by topic</li><li><a href="https://drfrostmaths.com/" target="_blank" rel="noopener">Dr Frost Maths</a> -- Free resources, slides, and interactive questions</li><li><a href="https://www.bbc.co.uk/bitesize" target="_blank" rel="noopener">BBC Bitesize</a> -- BBC Bitesize revision resources</li></ul>
+</section>'''
+    resource_sections += external_section
+    
+    # Insert before </main>
+    m = re.search(r'</main>', html)
+    if m:
+        pos = m.start()
+        html = html[:pos] + '\n' + resource_sections + '\n' + html[pos:]
+
+    # 2. Insert banner after </article> (topic-header)
+    # Legacy pages have <article class="topic-header">... close with </article>
+    m = re.search(r'</article>', html)
+    if m:
+        pos = m.end()
+        html = html[:pos] + '\n' + BANNER_HTML + '\n' + html[pos:]
+
+    # 3. Insert ad-right sidebar before </main>
     m = re.search(r'</main>', html)
     if m:
         ad_right = f'\n<aside class="ad-right">\n{affiliate_cards(subject_id)}\n</aside>\n'
         pos = m.start()
         html = html[:pos] + ad_right + html[pos:]
 
-    # 3. Insert footer + scripts before </body>
+    # 4. Insert footer + scripts before </body>
     m = re.search(r'</body>', html)
     if m:
         pos = m.start()
@@ -275,9 +310,7 @@ def main():
             if not path.exists():
                 continue
             html = path.read_text(encoding='utf-8')
-            if 'class="ad-right"' in html:
-                continue
-            new_html, changed = inject_chrome(html, sid)
+            new_html, changed = inject_chrome(html, sid, s['name'])
             if changed:
                 path.write_text(new_html, encoding='utf-8')
                 print(f"  Injected chrome into {pg} (subject={sid})")
