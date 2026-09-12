@@ -4762,9 +4762,10 @@ def affiliate_cards(subject_id):
     return "\n".join(cards)
 
 
-def topic_page(subject_name, topic, site, mode, board_diffs):
+def topic_page(subject_name, topic, site, mode, board_diffs, sidebar_topics=None,
+               prev_topic=None, next_topic=None):
     """Build one collapsed, board-agnostic topic page in the full site layout
-    (header, breadcrumb, ad banners, sectioned content, ad-right sidebar,
+    (header, sidebar, breadcrumb, ad banners, sectioned content, ad-right sidebar,
     footer) matching the gcserevise topic-page format."""
     esc = html.escape
     title = topic["title"]
@@ -4775,6 +4776,79 @@ def topic_page(subject_name, topic, site, mode, board_diffs):
     page_url = f"{domain}/topics/{sslug}/{tslug}.html"
     subject_label = f"{subject_name}"
     link_root = "../../"
+
+    # Static sidebar: one entry per topic in this subject, current marked active.
+    if sidebar_topics is None:
+        sidebar_topics = [{"title": title, "page": f"topics/{sslug}/{tslug}.html"}]
+    sidebar_items = "".join(
+        f'<li><a href="{link_root}{esc(t["page"])}"'
+        f'{" class=\"active\"" if slug(t["title"]) == tslug else ""}>'
+        f'{esc(t["title"])}</a></li>'
+        for t in sidebar_topics
+    )
+    sidebar_html = f"""<div class="sidebar">
+<h3>Topics</h3>
+<ul>{sidebar_items}</ul>
+</div>"""
+
+    # Prev/next topic nav within this subject (collapsed board-agnostic pages).
+    topic_nav_links = [f'<a href="{link_root}{sslug}.html">← Back to {esc(subject_name)} Overview</a>']
+    if prev_topic:
+        topic_nav_links.insert(0,
+            f'<a href="{link_root}{esc(prev_topic["page"])}">← {esc(prev_topic["title"])}</a>')
+    if next_topic:
+        topic_nav_links.append(
+            f'<a href="{link_root}{esc(next_topic["page"])}">{esc(next_topic["title"])} →</a>')
+    else:
+        topic_nav_links.append(f'<a href="{link_root}index.html">All Subjects →</a>')
+    topic_nav_html = "<nav class=\"topic-nav\">\n" + "\n".join(topic_nav_links) + "\n</nav>"
+
+    # Exam-board selector: pages are collapsed/board-agnostic, so the selector
+    # personalises board-specific links (past papers) via ?board= + localStorage
+    # instead of navigating. A-Level is untiered, so no tier selector.
+    board_options = [("aqa", "AQA"), ("edexcel", "Pearson Edexcel"),
+                     ("ocr", "OCR"), ("wjec", "WJEC / Eduqas"), ("ccea", "CCEA")]
+    board_select_html = ("<div class=\"selector-bar\"><div class=\"selector-group\">"
+        "<label for=\"board-select\">Exam Board: </label>"
+        "<select id=\"board-select\">"
+        + "".join(f'<option value="{v}">{esc(l)}</option>' for v, l in board_options)
+        + "</select></div></div>")
+    board_script = """<script>
+(function(){
+var sel=document.getElementById('board-select');
+if(!sel)return;
+function boardOf(li){
+var t=(li.textContent||'').toLowerCase();
+if(/\\bwjec\\b|\\beduqas\\b/.test(t))return 'wjec';
+if(/\\bccea\\b/.test(t))return 'ccea';
+if(/\\bedexcel\\b|\\bpearson\\b/.test(t))return 'edexcel';
+if(/\\bocr\\b/.test(t))return 'ocr';
+if(/\\baqa\\b/.test(t))return 'aqa';
+return '';
+}
+function apply(board){
+var items=document.querySelectorAll('[data-pp-list] li');
+items.forEach(function(li){
+var b=li.getAttribute('data-board')||boardOf(li);
+li.setAttribute('data-board',b);
+li.style.opacity=(!b||b===board)?'1':'0.45';
+});
+var badge=document.getElementById('board-badge');
+if(badge){badge.textContent=sel.options[sel.selectedIndex].text;}
+try{localStorage.setItem('alevel-board',board);}catch(e){}
+var u=new URL(location.href);u.searchParams.set('board',board);
+history.replaceState(null,'',u.toString());
+}
+var init='aqa';
+try{
+var q=new URL(location.href).searchParams.get('board');
+init=q||localStorage.getItem('alevel-board')||'aqa';
+}catch(e){}
+if(sel.querySelector('option[value="'+init+'"]'))sel.value=init;
+sel.addEventListener('change',function(){apply(sel.value);});
+apply(sel.value);
+})();
+</script>"""
 
     # Board differences removed from topic pages -- they live on subject landing pages
     diffs_html = ""
@@ -4833,14 +4907,18 @@ def topic_page(subject_name, topic, site, mode, board_diffs):
 <ul>{video_items}</ul>
 </section>"""
 
-    # Past Papers & Exam Resources section
+    # Past Papers & Exam Resources section (board-tagged so the board selector
+    # can highlight the chosen board's links).
     pastpapers_section = ""
     pastpapers = topic.get("past_papers", [])
     if pastpapers:
-        pp_items = "".join(f'<li><a href="{esc(p["url"])}" target="_blank" rel="noopener">{esc(p["title"])}</a> -- {esc(p["board"])}</li>' for p in pastpapers)
+        pp_items = "".join(
+            f'<li data-board="{esc(str(p.get("board", "")).lower())}">'
+            f'<a href="{esc(p["url"])}" target="_blank" rel="noopener">{esc(p["title"])}</a>'
+            f' -- {esc(p["board"])}</li>' for p in pastpapers)
         pastpapers_section = f"""<section class="section">
 <h2>📄 Past Papers & Exam Resources</h2>
-<ul>{pp_items}</ul>
+<ul data-pp-list>{pp_items}</ul>
 </section>"""
 
     # Additional Reading & External Links section
@@ -4913,6 +4991,12 @@ def topic_page(subject_name, topic, site, mode, board_diffs):
 </div>
 </header>
 
+{sidebar_html}
+
+<div class="ad-right">
+{affiliate_cards(subject_id)}
+</div>
+
 <main class="topic-content">
 <div class="disclaimer-banner"><strong>A-Level {mode} Aid:</strong> This resource is designed to support your revision and may contain errors. If you find a discrepancy with your class teaching, your teacher is correct -- please let us know at <a href="mailto:alevelrevise@scott.scottrix.co.uk">alevelrevise@scott.scottrix.co.uk</a>.</div>
 
@@ -4927,16 +5011,19 @@ def topic_page(subject_name, topic, site, mode, board_diffs):
 <div class="topic-meta">
 <span class="badge foundation">Year 1 / AS</span><span class="badge higher">Year 2 / A-Level</span>
 <span class="badge">All Boards (AQA, Edexcel, OCR, WJEC, CCEA)</span>
+<span class="badge" id="board-badge">AQA</span>
 </div>
 <p class="topic-desc">{meta_desc}</p>
 </article>
+
+{board_select_html}
 
 <a class="fastmail-topbar" data-banner="fastmail" href="https://join.fastmail.com/0d63b2d52105" target="_blank" rel="noopener"><img src="{link_root}FM Billboard 970x250.png" alt="Fastmail" loading="lazy"></a>
 <a class="fastmail-topbar" data-banner="dynadot" href="https://www.dynadot.com/?ref=scottrix" target="_blank" rel="nofollow noopener" hidden><img src="{link_root}dynadot-banner.jpg" alt="Dynadot -- register a new domain, web hosting, SSL" loading="lazy" onerror="this.parentElement.style.display='none';document.querySelector('[data-banner=fastmail]').hidden=false"></a>
 <script>(function(){{var fm=document.querySelector('[data-banner=fastmail]');var dd=document.querySelector('[data-banner=dynadot]');if(Math.random()<0.5){{fm.hidden=true;dd.hidden=false}}}})();</script>
 
-{keypoints_section}
 {objectives_section}
+{keypoints_section}
 {diffs_html}
 {example_section}
 {practice_section}
@@ -4945,10 +5032,7 @@ def topic_page(subject_name, topic, site, mode, board_diffs):
 {external_section}
 {lesson_section}
 
-<nav class="topic-nav">
-<a href="{link_root}{sslug}.html">← Back to {esc(subject_name)} Overview</a>
-<a href="{link_root}index.html">All Subjects -></a>
-</nav>
+{topic_nav_html}
 </main>
 <footer class="site-footer">
 <p>A-Level {mode} - Free revision notes for all subjects and exam boards</p>
@@ -4969,11 +5053,9 @@ if (localStorage.getItem('{site}-theme') === 'light') {{
 document.documentElement.classList.add('light-mode'); document.getElementById('theme-toggle').textContent = '☀️';
 }}
 </script>
-<aside class="ad-right">
-{affiliate_cards(subject_id)}
-</aside>
 <script src="{link_root}sidebar.js"></script>
 <script src="{link_root}affiliate-images.js"></script>
+{board_script}
 </body></html>"""
     return page
 
@@ -4995,7 +5077,12 @@ def build():
             subj_dir = os.path.join(base, "topics", slug(subject["name"]))
             os.makedirs(subj_dir, exist_ok=True)
             written_slugs = set()
-            for topic in subject["topics"]:
+            sidebar_topics = [
+                {"title": t["title"],
+                 "page": f"topics/{slug(subject['name'])}/{slug(t['title'])}.html"}
+                for t in subject["topics"]
+            ]
+            for i, topic in enumerate(subject["topics"]):
                 tslug = slug(topic["title"])
                 written_slugs.add(tslug)
                 page = f"topics/{slug(subject['name'])}/{tslug}.html"
@@ -5008,7 +5095,10 @@ def build():
                     "practiceQuestions": topic["practice"],
                     "page": page,
                 })
-                content = topic_page(subject["name"], topic, site, mode, BOARD_DIFFERENCES)
+                prev_t = sidebar_topics[i - 1] if i > 0 else None
+                next_t = sidebar_topics[i + 1] if i + 1 < len(sidebar_topics) else None
+                content = topic_page(subject["name"], topic, site, mode,
+                                     BOARD_DIFFERENCES, sidebar_topics, prev_t, next_t)
                 with open(os.path.join(subj_dir, f"{tslug}.html"), "w") as f:
                     f.write(content)
                 # Collapse old per-board pages: replace them with 301-style
