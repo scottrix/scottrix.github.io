@@ -29,22 +29,54 @@ import urllib.request
 from pathlib import Path
 
 KEY = 'a07cbf5c3cc787b087a172571cf323c7'
-KEY_LOCATION = f'https://scottrix.github.io/{KEY}.txt'
-API_ENDPOINT = 'https://api.indexnow.org/IndexNow'
-BASE = 'https://scottrix.github.io'
 BATCH_SIZE = 10000
 
-# Local repo roots and how their files map to public URLs.
-REPO_ROOTS = [
-    (Path('/home/scott/src/github/scottrix.github.io'), ''),
-    (Path('/home/scott/src/github/devtools'),           '/devtools'),
-    (Path('/home/scott/src/github/fintools'),           '/fintools'),
-    (Path('/home/scott/src/github/gcserevise'),         '/gcserevise'),
-    (Path('/home/scott/src/github/gcselessons'),        '/gcselessons'),
-    (Path('/home/scott/src/github/alevelrevise'),       '/alevelrevise'),
-    (Path('/home/scott/src/github/alevellessons'),      '/alevellessons'),
-    (Path('/home/scott/src/github/EasyPlayTV-docs'),    '/EasyPlayTV-docs'),
-]
+# Per-site config: --site github (default) or --site couk.
+SITES = {
+    'github': {
+        'host': 'scottrix.github.io',
+        'base': 'https://scottrix.github.io',
+        'roots': [
+            (Path('/home/scott/src/github/scottrix.github.io'), ''),
+            (Path('/home/scott/src/github/devtools'),           '/devtools'),
+            (Path('/home/scott/src/github/fintools'),           '/fintools'),
+            (Path('/home/scott/src/github/gcserevise'),         '/gcserevise'),
+            (Path('/home/scott/src/github/gcselessons'),        '/gcselessons'),
+            (Path('/home/scott/src/github/alevelrevise'),       '/alevelrevise'),
+            (Path('/home/scott/src/github/alevellessons'),      '/alevellessons'),
+            (Path('/home/scott/src/github/EasyPlayTV-docs'),    '/EasyPlayTV-docs'),
+        ],
+    },
+    'couk': {
+        'host': 'www.scottrix.co.uk',
+        'base': 'https://www.scottrix.co.uk',
+        'roots': [
+            (Path('/home/scott/src/pages'),              ''),
+            (Path('/home/scott/src/devtools'),           '/devtools'),
+            (Path('/home/scott/src/fintools'),           '/fintools'),
+            (Path('/home/scott/src/gcserevise'),         '/gcserevise'),
+            (Path('/home/scott/src/gcselessons'),        '/gcselessons'),
+            (Path('/home/scott/src/alevelrevise'),       '/alevelrevise'),
+            (Path('/home/scott/src/alevellessons'),      '/alevellessons'),
+            (Path('/home/scott/src/EasyPlayTV-docs'),    '/EasyPlayTV-docs'),
+        ],
+    },
+}
+
+API_ENDPOINT = 'https://api.indexnow.org/IndexNow'
+
+HOST = SITES['github']['host']
+BASE = SITES['github']['base']
+KEY_LOCATION = f'{BASE}/{KEY}.txt'
+REPO_ROOTS = SITES['github']['roots']
+
+
+def set_site(site):
+    global HOST, BASE, KEY_LOCATION, REPO_ROOTS
+    HOST = SITES[site]['host']
+    BASE = SITES[site]['base']
+    KEY_LOCATION = f'{BASE}/{KEY}.txt'
+    REPO_ROOTS = SITES[site]['roots']
 
 
 def enumerate_all_urls():
@@ -114,7 +146,7 @@ def paths_to_urls(paths):
 def submit_batch(url_list, dry):
     """POST a batch of URLs (<=10000) to IndexNow. Returns the HTTP status code."""
     body = {
-        'host': 'scottrix.github.io',
+        'host': HOST,
         'key': KEY,
         'keyLocation': KEY_LOCATION,
         'urlList': url_list,
@@ -150,10 +182,13 @@ def submit_batch(url_list, dry):
 
 def main():
     ap = argparse.ArgumentParser()
+    ap.add_argument('--site', choices=sorted(SITES), default='github',
+                    help='Which deployment to submit (default: github)')
     ap.add_argument('--dry', action='store_true', help='Plan-only, do not POST')
     ap.add_argument('--delta', nargs='*', default=None,
                     help='Submit only URLs mapped from the given local file paths')
     args = ap.parse_args()
+    set_site(args.site)
 
     if args.delta is not None:
         if not args.delta:
