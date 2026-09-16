@@ -2,8 +2,9 @@
 """
 submit_indexnow.py - Bulk-submit URLs to IndexNow (Bing, Yandex, Seznam, Naver).
 
-All five scottrix.github.io subsites (root, /devtools/, /fintools/, /gcserevise/, /EasyPlayTV-docs/)
-live on the same host, so a single key file at the root covers every URL.
+All seven scottrix.github.io subsites (root, /devtools/, /fintools/, /gcserevise/, /gcselessons/,
+/alevelrevise/, /alevellessons/, /EasyPlayTV-docs/) live on the same host, so a single key file
+at the root covers every URL.
 
 Usage:
     python3 submit_indexnow.py          # submit ALL known URLs
@@ -35,11 +36,14 @@ BATCH_SIZE = 10000
 
 # Local repo roots and how their files map to public URLs.
 REPO_ROOTS = [
-    (Path('/home/scott/src/scottrix.github.io'), ''),
-    (Path('/home/scott/src/devtools'),           '/devtools'),
-    (Path('/home/scott/src/fintools'),           '/fintools'),
-    (Path('/home/scott/src/gcserevise'),         '/gcserevise'),
-    (Path('/home/scott/src/EasyPlayTV-docs'),     '/EasyPlayTV-docs'),
+    (Path('/home/scott/src/github/scottrix.github.io'), ''),
+    (Path('/home/scott/src/github/devtools'),           '/devtools'),
+    (Path('/home/scott/src/github/fintools'),           '/fintools'),
+    (Path('/home/scott/src/github/gcserevise'),         '/gcserevise'),
+    (Path('/home/scott/src/github/gcselessons'),        '/gcselessons'),
+    (Path('/home/scott/src/github/alevelrevise'),       '/alevelrevise'),
+    (Path('/home/scott/src/github/alevellessons'),      '/alevellessons'),
+    (Path('/home/scott/src/github/EasyPlayTV-docs'),    '/EasyPlayTV-docs'),
 ]
 
 
@@ -159,7 +163,7 @@ def main():
         print(f'Delta mode: {len(urls)} URL(s) mapped from given paths')
     else:
         urls = enumerate_all_urls()
-        print(f'Full mode: {len(urls)} URL(s) enumerated across 5 repo roots')
+        print(f'Full mode: {len(urls)} URL(s) enumerated across {len(REPO_ROOTS)} repo roots')
 
     if not urls:
         print('No URLs to submit. Exiting.')
