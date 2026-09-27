@@ -32,7 +32,7 @@ def build_landing(subject, site, site_display):
     name = subject['name']
     subj_slug = subject['id'] or subject_slug(name)
     boards = subject.get('boards', [])
-    domain = f'https://scottrix.github.io/{site}'
+    domain = f'https://www.scottrix.co.uk/{site}'
     canonical = f'{domain}/{subj_slug}.html'
 
     # Collapsed model: each subject has a flat list of topics (one page each).
@@ -47,9 +47,12 @@ def build_landing(subject, site, site_display):
     )
 
     # Group by first word (strand) for the topics-grid sections.
+    # Single-topic subjects get one section headed by the subject name
+    # instead of a strand derived from the lone topic title.
     grouped = {}
+    single_topic = total_topics == 1
     for t in topics:
-        key = t['title'].split()[0]
+        key = name if single_topic else re.sub(r'[^A-Za-z0-9]', '', t['title'].split()[0])
         grouped.setdefault(key, []).append(t)
 
     sections = []
@@ -66,7 +69,8 @@ def build_landing(subject, site, site_display):
         )
 
     sections_html = '\n'.join(sections)
-    topic_desc = (f'Free A-Level {name} revision notes. {total_topics} topics '
+    topic_desc = (f'Free A-Level {name} revision notes. {total_topics} topic'
+                  f'{"s" if total_topics != 1 else ""} '
                   f'across AQA, Edexcel, OCR, WJEC, and CCEA specifications.')
 
     # Board differences section for subject landing page
