@@ -80,7 +80,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - Algebraic Expressions",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/algebraic-expressions/",
+              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -159,7 +159,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - Quadratic Equations",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/quadratic-equations/",
+              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -559,7 +559,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - Complex Numbers",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/complex-numbers/",
+              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-further/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -636,7 +636,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - Matrices",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/matrices/",
+              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-further/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -788,7 +788,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - Polar Coordinates",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/polar-coordinates/",
+              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -862,7 +862,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - Hyperbolic Functions",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/hyperbolic-functions/",
+              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-further/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -946,7 +946,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - Mechanics and Motion",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/mechanics-and-motion/",
+              "url": "https://www.physicsandmathstutor.com/physics-revision/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -1181,7 +1181,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - Particles and Quantum Physics",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/particles-and-quantum-physics/",
+              "url": "https://www.physicsandmathstutor.com/physics-revision/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -1340,7 +1340,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - Atomic Structure and Bonding",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/atomic-structure-and-bonding/",
+              "url": "https://www.physicsandmathstutor.com/chemistry-revision/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -1494,7 +1494,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - Kinetics and Equilibria",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/kinetics-and-equilibria/",
+              "url": "https://www.physicsandmathstutor.com/chemistry-revision/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -1646,7 +1646,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - Redox and Electrochemistry",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/redox-and-electrochemistry/",
+              "url": "https://www.physicsandmathstutor.com/chemistry-revision/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -1722,7 +1722,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - Cell Structure and Function",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/cell-structure-and-function/",
+              "url": "https://www.physicsandmathstutor.com/biology-revision/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -1795,7 +1795,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - Genetics and Inheritance",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/genetics-and-inheritance/",
+              "url": "https://www.physicsandmathstutor.com/biology-revision/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -1868,7 +1868,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - Biochemistry and Respiration",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/biochemistry-and-respiration/",
+              "url": "https://www.physicsandmathstutor.com/chemistry-revision/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -1940,7 +1940,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - Ecology and Ecosystems",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/ecology-and-ecosystems/",
+              "url": "https://www.physicsandmathstutor.com/biology-revision/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -2012,7 +2012,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - Homeostasis and the Nervous System",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/homeostasis-and-the-nervous-system/",
+              "url": "https://www.physicsandmathstutor.com/biology-revision/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -2091,7 +2091,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - Poetry Analysis",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/poetry-analysis/",
+              "url": "https://www.physicsandmathstutor.com/english-revision/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -2164,7 +2164,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - Prose and the Novel",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/prose-and-the-novel/",
+              "url": "https://www.physicsandmathstutor.com/english-revision/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -2237,7 +2237,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - Drama and Shakespeare",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/drama-and-shakespeare/",
+              "url": "https://www.physicsandmathstutor.com/english-revision/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -2310,7 +2310,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - Critical Writing and Context",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/critical-writing-and-context/",
+              "url": "https://www.physicsandmathstutor.com/english-revision/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -2387,7 +2387,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - Interpretation and Sources",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/interpretation-and-sources/",
+              "url": "https://www.physicsandmathstutor.com/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -2603,7 +2603,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - Historical Enquiry and Essay Skills",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/historical-enquiry-and-essay-skills/",
+              "url": "https://www.physicsandmathstutor.com/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -2683,7 +2683,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - Physical Geography",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/physical-geography/",
+              "url": "https://www.physicsandmathstutor.com/geography-revision/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -2756,7 +2756,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - Human Geography",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/human-geography/",
+              "url": "https://www.physicsandmathstutor.com/geography-revision/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -2830,7 +2830,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - Fieldwork and Data Collection",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/fieldwork-and-data-collection/",
+              "url": "https://www.physicsandmathstutor.com/geography-revision/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -2903,7 +2903,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - Hazards and Global Issues",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/hazards-and-global-issues/",
+              "url": "https://www.physicsandmathstutor.com/geography-revision/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -2985,7 +2985,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - Microeconomics and Markets",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/microeconomics-and-markets/",
+              "url": "https://www.physicsandmathstutor.com/economics-revision/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -3210,7 +3210,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - International Trade and Development",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/international-trade-and-development/",
+              "url": "https://www.physicsandmathstutor.com/economics-revision/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -3289,7 +3289,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - Marketing",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/marketing/",
+              "url": "https://www.physicsandmathstutor.com/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -3365,7 +3365,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - Finance and Accounts",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/finance-and-accounts/",
+              "url": "https://www.physicsandmathstutor.com/economics-revision/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -3439,7 +3439,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - Operations Management",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/operations-management/",
+              "url": "https://www.physicsandmathstutor.com/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -3513,7 +3513,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - People and Leadership",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/people-and-leadership/",
+              "url": "https://www.physicsandmathstutor.com/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -3746,7 +3746,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - Data Structures and Algorithms",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/data-structures-and-algorithms/",
+              "url": "https://www.physicsandmathstutor.com/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -3820,7 +3820,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - Computer Systems and Architecture",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/computer-systems-and-architecture/",
+              "url": "https://www.physicsandmathstutor.com/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -3895,7 +3895,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - Networks and Internet",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/networks-and-internet/",
+              "url": "https://www.physicsandmathstutor.com/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -3972,7 +3972,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - Boolean Logic and Relational Databases",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/boolean-logic-and-relational-databases/",
+              "url": "https://www.physicsandmathstutor.com/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -4198,7 +4198,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - Memory and Cognitive Psychology",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/memory-and-cognitive-psychology/",
+              "url": "https://www.physicsandmathstutor.com/psychology-revision/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -4272,7 +4272,7 @@ SUBJECTS = [
           "external_links": [
 {
               "title": "Physics & Maths Tutor - Social Influence and Attachment",
-              "url": "https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/pure-maths/social-influence-and-attachment/",
+              "url": "https://www.physicsandmathstutor.com/psychology-revision/",
               "description": "Free notes, worksheets, and past paper questions by topic"
             },
 {
@@ -4634,7 +4634,202 @@ BOARD_DIFFERENCES = {
             "areas of psychology.",
     "CCEA": "Northern Ireland's board; unitised assessment with content broadly "
             "mirroring other boards.",
-  }
+  },
+  "English Language": {
+    "AQA": "Paper 1: language, the individual and society (textual variations, "
+           "child language acquisition). Paper 2: language diversity and change. "
+           "NEA: language investigation plus original writing (20% of A-level).",
+    "OCR": "Paper 1: exploring language (topics such as language and gender, "
+           "language and journalism). Paper 2: dimensions of linguistic variation "
+           "and child language. NEA: independent language investigation (20%).",
+    "WJEC/Eduqas": "Component 1: language and identity with a spoken language "
+           "study; Component 2: language change over time plus a directed writing "
+           "task; NEA: language investigation (20%).",
+  },
+  "Sociology": {
+    "AQA": "Three papers: education with methods in context; topics in sociology "
+           "(families, beliefs, media); crime and deviance with theory and methods. "
+           "No coursework, 80 marks per paper.",
+    "OCR": "Three papers: socialisation, culture and identity; researching social "
+           "inequalities; debating and researching social issues (globalisation, "
+           "crime). Includes a compulsory research methods section.",
+    "WJEC/Eduqas": "Unitised: contemporary families and households; education and "
+           "research methods; crime, deviance and social stratification.",
+  },
+  "Politics": {
+    "AQA": "Two papers: Government of the UK (constitution, Parliament, PM and "
+           "cabinet, judiciary) and Politics of the USA plus political ideas. "
+           "30-mark essays throughout; no coursework.",
+    "Edexcel": "Three papers: UK Politics with core political ideas; UK Government "
+               "with non-core political ideas; and either USA or global politics. "
+               "30-mark essays; no coursework.",
+  },
+  "Law": {
+    "AQA": "Three papers: the English legal system and criminal law; tort; and "
+           "further law (contract or human rights). Problem questions and essays; "
+           "no coursework.",
+    "OCR": "Three components: the legal system and criminal law; law making and "
+           "the law of tort; the nature of law and either contract or human rights. "
+           "Scenario-based problem questions.",
+    "WJEC/Eduqas": "Unitised: the English legal system and law making; criminal "
+                   "law and tort; plus broader legal concepts and evaluation essays.",
+  },
+  "Religious Studies": {
+    "AQA": "Two papers: philosophy of religion and ethics; study of religion "
+           "(Christianity) and dialogues between philosophy/ethics and religion. "
+           "Extended essays; no coursework.",
+    "OCR": "Three components: philosophy of religion; religion and ethics; "
+           "developments in religious thought. Essay-based with set text study.",
+    "WJEC/Eduqas": "Component 1: philosophy of religion; Component 2: religion "
+                   "and ethics; Component 3: study of a religion. Plus a compulsory "
+                   "non-binding textual study.",
+    "CCEA": "Northern Ireland's board: units on philosophy of religion, ethics "
+            "and the development of Christian thought; synoptic assessment.",
+  },
+  "French": {
+    "AQA": "Paper 1: listening, reading and writing (translation into English and "
+           "French). Paper 2: two essays on set literature or film. Paper 3: "
+           "speaking including the Individual Research Project.",
+    "Edexcel": "Paper 1: listening, reading and translation. Paper 2: written "
+               "response to works and translation. Paper 3: speaking on a theme "
+               "and the IRP.",
+    "WJEC/Eduqas": "Oral unit (independent research project), listening and "
+                   "reading unit, and a critical response unit with essay writing "
+                   "on set works.",
+    "CCEA": "Northern Ireland's board: speaking, listening and reading units plus "
+            "a written paper with set-work essays.",
+  },
+  "Spanish": {
+    "AQA": "Paper 1: listening, reading and writing (translation both ways). "
+           "Paper 2: two essays on set literature or film. Paper 3: speaking with "
+           "the Individual Research Project.",
+    "Edexcel": "Paper 1: listening, reading and translation. Paper 2: written "
+               "response to works and translation. Paper 3: speaking on a theme "
+               "and the IRP.",
+    "WJEC/Eduqas": "Oral unit (IRP), listening and reading unit, and critical "
+                   "response essays on set works.",
+    "CCEA": "Northern Ireland's board: speaking, listening and reading units plus "
+            "a written paper with set-work essays.",
+  },
+  "German": {
+    "AQA": "Paper 1: listening, reading and writing (translation both ways). "
+           "Paper 2: two essays on set literature or film. Paper 3: speaking with "
+           "the Individual Research Project.",
+    "Edexcel": "Paper 1: listening, reading and translation. Paper 2: written "
+               "response to works and translation. Paper 3: speaking on a theme "
+               "and the IRP.",
+    "WJEC/Eduqas": "Oral unit (IRP), listening and reading unit, and critical "
+                   "response essays on set works.",
+    "CCEA": "Northern Ireland's board: speaking, listening and reading units plus "
+            "a written paper with set-work essays.",
+  },
+  "Latin": {
+    "OCR": "Unseen translation (prose and verse), comprehension or prose "
+           "composition, and prose/verse literature set texts. Verse literature "
+           "includes an extended essay response.",
+    "WJEC/Eduqas": "Language paper (unseen translation and comprehension), "
+                   "literature paper on set texts, plus optional coursework on a "
+                   "topic of classical interest.",
+  },
+  "Art and Design": {
+    "AQA": "Coursework-based: Component 1 personal investigation with 1,000-3,000 "
+           "word critical essay (60%); Component 2 externally set assignment with "
+           "15 hours supervised time (40%).",
+    "Edexcel": "Component 1: personal investigation (60% of marks) including "
+               "critical/contextual study; Component 2: externally set assignment "
+               "with 15 hours supervised time (40%).",
+    "OCR": "Portfolio unit (personal investigation, 60%) and externally set task "
+           "with 15 hours supervised time (40%).",
+    "WJEC/Eduqas": "Personal investigation portfolio (60%) including written "
+                   "critical study; externally set assignment (40%) with supervised "
+                   "time.",
+  },
+  "Music": {
+    "Edexcel": "Performing (30%): 8+ minutes recital. Composing (30%): free "
+               "composition plus technical/brief compositions. Appraising (40%): "
+               "written paper on set works, dictation and unfamiliar listening.",
+    "OCR": "Performing and composing (60% non-exam) plus a listening and "
+           "appraising written paper (40%) covering areas of study and set works.",
+    "WJEC/Eduqas": "Performing (30%), composing (30%) and an appraising written "
+                   "exam (40%) with set works and aural tests.",
+  },
+  "Drama and Theatre": {
+    "AQA": "Written exam (3 hours, set text performance concepts and live "
+           "production review, 40%); devising coursework with working notebook "
+           "(30%); scripted performance (30%).",
+    "Edexcel": "Devising coursework with portfolio (40%); text in performance "
+               "group/monologue (20%); written exam on two set texts (40%).",
+    "OCR": "Devising with portfolio (40%); performing scripted texts (20%); "
+           "written paper exploring practitioners and performance texts (40%).",
+    "WJEC/Eduqas": "Devising theatre (40%); text in performance (20%); written "
+                   "exam on set texts and live theatre review (40%).",
+  },
+  "Media Studies": {
+    "OCR": "Two written papers on media language, representation, industries and "
+           "audiences with close study products (70%), plus a media production "
+           "NEA with statement of intent (30%).",
+    "WJEC/Eduqas": "Component 1 and 2 written exams on all four framework "
+                   "frameworks and set products (70%); cross-media production NEA "
+                   "(30%).",
+  },
+  "Physical Education": {
+    "AQA": "Two written papers (applied anatomy, exercise physiology, skill "
+           "acquisition, sport psychology, socio-cultural issues) worth 70%, plus "
+           "practical performance and analysis/evaluation coursework (30%).",
+    "Edexcel": "Two exam papers (70%) plus NEA: practical performance and "
+               "performance analysis and performance development programme (30%).",
+    "OCR": "Two exam papers covering physiological and socio-cultural topics "
+           "(60%), plus practical performance with an evaluating and improving "
+           "performance oral response (40% total NEA/Practical).",
+    "WJEC/Eduqas": "Two written papers (70%) plus practical performance and "
+                   "personal performance analysis (30%).",
+  },
+  "Ancient History": {
+    "OCR": "Two written papers: Greece (period study plus in-depth options on "
+           "Sparta, Athens or Alexander) and Rome (period study plus the "
+           "Julio-Claudians or Britain). Essay and source-based analysis.",
+  },
+  "Classical Civilisation": {
+    "OCR": "Three written papers: The World of the Hero (Homer, compulsory), plus "
+           "two options such as Greek Theatre, Imperial Image, Greek Religion, "
+           "Greek Art or Love and Relationships. Essay-based with source material.",
+  },
+  "Geology": {
+    "WJEC/Eduqas": "Unitised theory papers covering earth structure, rock "
+                   "processes, geological time, hazards and resources, plus a "
+                   "practical/fieldwork assessment including mapwork interpretation.",
+  },
+  "Statistics": {
+    "Edexcel": "Two written papers with a graphical calculator allowed: "
+               "probability, distributions, hypothesis testing, sampling, "
+               "correlation and regression, and time series analysis.",
+  },
+  "Film Studies": {
+    "WJEC/Eduqas": "Component 1: Hollywood (classical and new) and US/UK "
+                   "independent film comparison; Component 2: global, documentary "
+                   "and short film; Component 3: production NEA (short film or "
+                   "screenplay with storyboard/photography).",
+  },
+  "Dance": {
+    "AQA": "Component 1: performance and choreography (practical, 50%) including "
+           "solo performance and group choreography; Component 2: written paper "
+           "on dance appreciation, set works and choreographic analysis (50%).",
+  },
+  "Design and Technology": {
+    "AQA": "Two written papers on technical and designing/making principles "
+           "(50%), plus a substantial NEA design-and-make portfolio with "
+           "iterative design evidence (50%).",
+  },
+  "Philosophy": {
+    "AQA": "Two written papers, each 3 hours: epistemology and moral philosophy "
+           "in one; metaphysics of God, metaphysics of mind in the other. "
+           "Essay-based (25-mark essays); no coursework.",
+  },
+  "Accounting": {
+    "AQA": "Two written papers: financial accounting (double entry, statements, "
+           "sole traders and limited companies) and accounting for analysis and "
+           "decision-making (ratios, budgeting, costing). Calculator allowed.",
+  },
 }
 
 REDIRECT_TEMPLATE = """<!DOCTYPE html>

@@ -36,7 +36,7 @@ def build_landing(subject, site, site_display):
     canonical = f'{domain}/{subj_slug}.html'
 
     # Collapsed model: each subject has a flat list of topics (one page each).
-    topics = [{'title': t['title'], 'page': t['page']} for t in subject.get('topics', [])]
+    topics = [{'title': t['title'], 'page': t['page'], 'strand': t.get('strand', '')} for t in subject.get('topics', [])]
     total_topics = len(topics)
     unique_titles = sorted({t['title'] for t in topics})
 
@@ -52,7 +52,7 @@ def build_landing(subject, site, site_display):
     grouped = {}
     single_topic = total_topics == 1
     for t in topics:
-        key = name if single_topic else re.sub(r'[^A-Za-z0-9]', '', t['title'].split()[0])
+        key = name if single_topic else t.get('strand') or re.sub(r'[^A-Za-z0-9]', '', t['title'].split()[0])
         grouped.setdefault(key, []).append(t)
 
     sections = []
@@ -87,7 +87,8 @@ def build_landing(subject, site, site_display):
 {rows}
 </section>"""
 
-    title = f'A-Level {name} - Free {site_display} Notes'
+    kind = 'Lesson Plans' if site == 'alevellessons' else 'Revision Notes'
+    title = f'A-Level {name} - Free {kind}'
 
     page = f'''<!DOCTYPE html>
 <html lang="en">
@@ -132,7 +133,7 @@ def build_landing(subject, site, site_display):
 </div>
 
 <main class="topic-content">
-<div class="disclaimer-banner"><strong>A-Level Revision Aid:</strong> This resource is designed to support your revision and may contain errors. If you find a discrepancy with your class teaching, your teacher is correct — please let us know at <a href="mailto:alevelrevise@scott.scottrix.co.uk">alevelrevise@scott.scottrix.co.uk</a>.</div>
+<div class="disclaimer-banner"><strong>{"A-Level Lesson Plans" if site == "alevellessons" else "A-Level Revision Aid"}:</strong> {"Every lesson is a parent-delivered 50-minute plan with teaching script, worked examples and checks for understanding" if site == "alevellessons" else "This resource is designed to support your revision"}. Content may contain errors. If you find a discrepancy with your class teaching, your teacher is correct — please let us know at <a href="mailto:{site}@scott.scottrix.co.uk">{site}@scott.scottrix.co.uk</a>.</div>
 
 <nav class="breadcrumb">
 <a href="index.html">Home</a> <span>›</span>
